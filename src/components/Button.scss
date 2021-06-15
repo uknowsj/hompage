@@ -1,0 +1,59 @@
+$blue: #228be6; //변수 설정
+$gray: #495057;
+$pink: #f06595;
+
+@mixin button-color($color) { // 믹스인 이름과 변수 설정
+    background: $color;
+    &:hover {
+        background: lighten($color, 10%);
+    } 
+    &:active {
+        background: darken($color, 10%);
+    }
+    &.outline {
+        color: $color;
+        background: white;
+        border: 1px solid $color;
+        &:hover {
+            background: $color;
+            color: white;
+        }
+
+    }
+}
+.Button {
+    display : inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    height: 2.25rem; // 크롬 기본 글꼴 크기 16px*2.25 =36px
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+
+    background: $blue;
+
+    &.small {
+        font-size: 1rem;
+    }
+    &.medium {
+        font-size: 2rem;
+    }
+
+
+    &.blue {
+        @include button-color($blue);
+    }
+    &.gray {
+        @include button-color($gray);
+    }
+    &.pink {
+        @include button-color($pink);
+    }
+
+}
