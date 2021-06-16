@@ -1,14 +1,17 @@
-import { BrowserRouter } from 'react-router-dom';
-import GlobalStyle from './style/GlobalStyle';
-import Header from './components/Header';
-import MainPage from './components/MainPage'
+import { BrowserRouter, Route } from 'react-router-dom';
+import GlobalStyle from 'style/GlobalStyle';
+import Business from 'components/Business/Business';
+import { Home } from 'pages';
+
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
         <div className="App">
-          <Header />
-          <MainPage />
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/business" component={Business}></Route>
+          {/* <Header />
+          <MainPage /> */}
       </div>
     </BrowserRouter>
   );

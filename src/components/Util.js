@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {defaultLayout} from '../style/CommonStyle';
 
 const BannerContainer = styled.div`
   overflow: clip;
@@ -58,5 +57,22 @@ export const Video = ({src, texts}) => {
         </div>      
       </VideoWrapper>
     </BannerContainer>
+  )
+}
+
+const ImgContainer = styled.div`
+  border: 1px solid purple;
+  width: ${({width}) => width};
+
+  img {
+    width: 100%;
+  }
+`
+
+export const Img = ({ src, alt, width}) => {
+  return (
+    <ImgContainer width={width}>
+      <img src={src} alt={alt} />
+    </ImgContainer>
   )
 }

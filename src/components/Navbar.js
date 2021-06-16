@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link as LinkR } from 'react-router-dom';
-import {defaultLayout} from '../style/CommonStyle';
-
+import {DefaultLayout} from 'style/CommonStyle';
 
 const NavContainer = styled.div`
-  ${defaultLayout}
+  ${DefaultLayout}
   height: 60px;
   position: fixed;
   top: 0;
@@ -37,7 +36,6 @@ const Logo = styled(LinkR)`
 	text-decoration: none;
 `
 
-//
 const MenuItem = styled.div`
   display: 'inline-block';
   position: relative;
@@ -92,14 +90,15 @@ const Menu = styled.div`
     ${MenuItem} + ${MenuItem} {
       margin-left: unset;
     }
-    
-    background: black;
+    color: white;
+    background-color: black;
     text-align: center;
 
   }
 `
 const Util = styled.div`
   display: flex;
+  z-index: 10;
 
 `
 const LanguageWrap = styled.ul`
@@ -112,9 +111,18 @@ const LanguageWrap = styled.ul`
   list-style: none;
   cursor: pointer;
 
+  color: inherit;
   span:not(.selected) {
-    color: inherit;
     opacity: 0.6;
+  }
+  
+  @media screen and (max-width:768px) {
+    ${props => props.click&&css`
+      color: white;
+      span:not(.selected) {
+        opacity: 0.6;
+      }
+    `}
   }
 `
 
@@ -126,10 +134,13 @@ const MobileIcon = styled.div`
 		transform: translateY(2px);
 
     cursor: pointer;
+    ${props => props.click&&css`
+      color:white;
+    `}
 	}
 `
 
-const Language = ({clickLang,selected}) => {
+const Language = ({ clickLang, selected }) => {
 
   return (
     <>
@@ -184,10 +195,10 @@ const Navbar = () => {
         </MenuItem>
       </Menu>
       <Util>
-        <LanguageWrap>
+        <LanguageWrap click={click}>
           <Language clickLang={clickLang} selected={langs.selected}/>
         </LanguageWrap>
-        <MobileIcon onClick={handleClick}>
+        <MobileIcon onClick={handleClick} click={click}>
           {click ? <FaTimes /> : <FaBars />}
         </MobileIcon>
       </Util>      

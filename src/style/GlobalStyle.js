@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
     font-family:'Noto Sans KR', 'Spoqa Han Sans', 'Sans-serif';
     color: black!important;
   }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `
 
 export default GlobalStyle;
