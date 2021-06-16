@@ -2,60 +2,61 @@ import React from 'react';
 import styled from 'styled-components';
 import {defaultLayout} from '../style/CommonStyle';
 
-const StyledVideo = styled.div`
-  position: relative;
-  overflow-x: clip;
-
+const BannerContainer = styled.div`
+  overflow: clip;
   width: 100%;
-  height:100vh;
+`
+const VideoWrapper = styled.div`
+  position: relative;
+  max-height: 100vh;
   
-
   video {
-    position: absolute;
-    width: 1920px;
-
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
+    
+    width: 1920px;
   }
-  div {
-    /* border: 1px solid red; */
-    position: absolute;
-    width: fit-content;
 
-    //offset
+  div {
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+
+    width: fit-content;
 
     font-size: 4rem;
     font-weight: bold;
     color: white;
     text-align: center;
-
   }
-    @media screen and (max-width:768px){
-      video {
-        width: 1000px;
-      }
-      div {
-        font-size: 2.125rem;
-      }
+
+  @media screen and (max-width:768px) {
+    video {
+      width: 1000px;
     }
+
+    div {
+      font-size: 2rem;
+    }
+  }
 
 `
 
 export const Video = ({src, texts}) => {
   return (
-    <StyledVideo>
-      <video muted autoPlay loop>
-        <source src={src} type="video/mp4" />
-      </video>
-      <div>
-        {
-          texts.map(text => (<p>{text}</p>))
-        }
-      </div>      
-    </StyledVideo>
+    <BannerContainer>
+      <VideoWrapper>
+        <video muted autoPlay loop>
+          <source src={src} type="video/mp4" />
+        </video>
+        <div>
+          {
+            texts.map(text => (<p>{text}</p>))
+          }
+        </div>      
+      </VideoWrapper>
+    </BannerContainer>
   )
-
 }
