@@ -25,7 +25,7 @@ const VideoWrapper = styled.div`
 
     width: fit-content;
 
-    font-size: 4rem;
+    font-size: 6.4rem;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -37,7 +37,7 @@ const VideoWrapper = styled.div`
     }
 
     div {
-      font-size: 2rem;
+      font-size: 3.2rem;
     }
   }
 
@@ -61,9 +61,9 @@ export const Video = ({src, texts}) => {
 }
 
 const ImgContainer = styled.div`
-  border: 1px solid purple;
   width: ${({width}) => width};
-
+  height: inherit;
+  overflow: hidden;
   img {
     width: 100%;
   }

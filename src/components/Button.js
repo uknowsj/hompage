@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   border: 1px solid #adb5bd;
   border-radius: 4px;
   display: inline-flex;
@@ -24,8 +24,6 @@ const StyledButton = styled.button`
 
   font-family: 'Noto Sans KR', 'Spoqa Han Sans', 'Sans-serif';
   font-weight: 600;
-
-
 `
 const Button = ({ children }) => {
   return (

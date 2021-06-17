@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+// const bigMargin = '140px';
+// const medMargin = ''
 export const DefaultLayout = css`
   width: 100%;
   max-width: 1920px;
@@ -43,22 +45,24 @@ export const Bar = styled.div`
 `
 
 export const Title = styled.div`
-  font-size: 3rem;
+  font-size: 4.8rem;
   font-weight: 600;
   word-spacing: -5px;
+  white-space: pre-wrap;
   text-align:${({center}) => center&&'center'};
 `
 
 export const MiddleTitle = styled.div`
-  font-size: ${props => props.size||'36px'};
+  font-size: ${props => props.size||'3.6rem'};
   font-weight: 600;
   word-spacing: -5px;
 ` 
 
 export const TextStyle = styled.div`
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: lighter;
   line-height: 2;
+  white-space: pre-line;
   margin-top: ${props=> props.margin||'36px'};
 `
 export const Text = ({children, margin}) => {

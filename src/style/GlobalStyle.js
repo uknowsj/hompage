@@ -9,11 +9,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-  body {
+  html {
+    font-size: 10px;
     font-family:'Noto Sans KR', 'Spoqa Han Sans', 'Sans-serif';
     color: black!important;
+    scroll-behavior: smooth;
   }
-
   a {
     color: black;
     text-decoration: none;

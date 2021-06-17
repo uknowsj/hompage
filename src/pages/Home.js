@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Navbar from 'components/Navbar'
 import { Video } from 'components/Util'
 import sample from 'assets/videos/main.mp4';
@@ -6,30 +6,12 @@ import Container from 'components/Container';
 import building from 'assets/images/building.jpg';
 import styled from 'styled-components'
 
-import {default as HomeComponent} from 'components/Home';
+import {default as HomeComponent} from 'components/HomeElements';
 
-const HomeContainer = styled.div`
-  ${Container} {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-`
-const ImgContainer = styled.div`
-  width:100%;
-  background:blue;
-
-
-  /* ::after {
-    content: '';
-    width: 100%;
-    position: relative;
-
-
-  } */
-
-`
 const Home = () => {
+  useEffect(()=>{
+    console.log("렌더링됨~~")
+  },[])
   return (
     <div>
       <div>

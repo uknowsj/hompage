@@ -15,7 +15,7 @@ const NavContainer = styled.div`
   align-items: center;
 
   background-color: transparent;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-family: 'Spoqa Han Sans', sans-serif;
   color: white;
   transition: .3s ease-out;
@@ -165,7 +165,6 @@ const Navbar = () => {
   }
   const onScroll = () => {
     setPosition(window.scrollY);
-    // console.log("position",position);
   }
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -173,6 +172,10 @@ const Navbar = () => {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  if(position<=700&&(position+30>=730&&position<=750)){
+    window.scrollTo({top:'1800', behavior:'auto'});
+  }
 
   return (
     <>
