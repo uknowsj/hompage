@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 10px;
     font-family:'Noto Sans KR', 'Spoqa Han Sans', 'Sans-serif';
     color: black!important;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
   a {
     color: black;

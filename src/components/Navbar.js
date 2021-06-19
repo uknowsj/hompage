@@ -173,10 +173,6 @@ const Navbar = () => {
     };
   }, []);
 
-  if(position<=700&&(position+30>=730&&position<=750)){
-    window.scrollTo({top:'1800', behavior:'auto'});
-  }
-
   return (
     <>
     <NavContainer active={position>=100?true:false}>

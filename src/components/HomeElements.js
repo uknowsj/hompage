@@ -206,7 +206,12 @@ const SectionCompany = ({ title, text, mdTitle}) => {
     </Container>
   )
 
-} 
+}
+
+const TestTag = styled.div`
+scroll-snap-type: y mandatory;
+
+`
 const Home = () => {
 
   const Ele = useRef();
@@ -217,7 +222,7 @@ const Home = () => {
 
 
   return (
-    <div onScroll={onScroll}>
+    <TestTag>
     <SectionCulture 
       title={'문화를 만들어 나갑니다'}
       discription={'텍스트 너머의 가치'}
@@ -257,7 +262,7 @@ const Home = () => {
       mdTitle={'문의하기'}
     />
     
-    </div>
+    </TestTag>
   )
 }
 export default Home

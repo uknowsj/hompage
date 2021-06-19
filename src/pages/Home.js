@@ -13,8 +13,8 @@ const Home = () => {
     console.log("렌더링됨~~")
   },[])
   return (
-    <div>
-      <div>
+    <div >
+      <div style={{scrollSnapAlign: 'start'}}>
         <Video src={sample} texts={["텍스트 너머의 가치를","만들어 나갑니다."]} />
         <Navbar />
       </div>

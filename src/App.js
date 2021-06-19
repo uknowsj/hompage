@@ -7,11 +7,10 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
+    
         <div className="App">
           <Route exact path="/" component={Home}></Route>
           <Route path="/business" component={Business}></Route>
-          {/* <Header />
-          <MainPage /> */}
       </div>
     </BrowserRouter>
   );
