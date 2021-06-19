@@ -2,7 +2,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import GlobalStyle from 'style/GlobalStyle';
 import Business from 'components/Business/Business';
 import { Home } from 'pages';
-
 function App() {
   return (
     <BrowserRouter>

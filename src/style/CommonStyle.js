@@ -27,9 +27,8 @@ export const StyledContainer = styled.div`
   width: 100%;
   min-height: 600px;
   border: 1px solid red;
-  background:gray;
   scroll-snap-align: start;
-
+  scroll-snap-stop: always
 `
 
 export const Content = styled.div`

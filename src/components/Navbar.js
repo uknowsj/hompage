@@ -154,6 +154,7 @@ const Language = ({ clickLang, selected }) => {
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [position, setPosition] = useState(0); //scroll  
+  const [bfPosition, setBfPosition] = useState(position);  
   const [langs, setLang] = useState({
     lang:['KOR','ENG'],
     selected:'KOR'
@@ -166,12 +167,28 @@ const Navbar = () => {
   const onScroll = () => {
     setPosition(window.scrollY);
   }
-  useEffect(() => {
+  useEffect(()=>{
     window.addEventListener("scroll", onScroll);
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll",onScroll);
     };
-  }, []);
+  },[]);
+  // console.log("pos",position)
+  // useEffect(() => {
+  //   console.log("bf Pos",bfPosition)
+  //   console.log("pos",position)
+  //   if(bfPosition<position&&(position>=30 && position<=600)){
+  //     console.log("뿜!")
+  //     // console.log("bf Pos",bfPosition)
+  //     // console.log("pos",position)
+  //     window.scrollTo({top:'1800', behavior:'auto'})
+  //     setBfPosition(position);
+  //   }
+  // }, [position, bfPosition]);
+
+  // if(position<=700&&(position+30>=730&&position<=750)){
+  //   window.scrollTo({top:'1800', behavior:'auto'});
+  // }
 
   return (
     <>
@@ -187,10 +204,7 @@ const Navbar = () => {
           <LinkR to="/business">BUSINESS</LinkR>
         </MenuItem>
         <MenuItem>
-          <LinkR to="/contents">CONTENTS</LinkR>
-        </MenuItem>
-        <MenuItem>
-          <a href="https://www.naver.com/">BOOK</a>
+          <a href="https://www.naver.com/">CONTENTS</a>
         </MenuItem>
       </Menu>
       <Util>
