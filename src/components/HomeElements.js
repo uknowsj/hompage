@@ -9,7 +9,7 @@ import { Img } from 'components/Util'
 import shortcut from 'assets/images/shortcut.svg'
 import phoneImg from 'assets/images/phone.png';
 
-import useScrollSnap from 'react-use-scroll-snap';
+// import useScrollSnap from 'react-use-scroll-snap';
 const Content = styled.div`
   display: flex;
   justify-content: ${({rowCenter}) => rowCenter?'center':'space-between'};

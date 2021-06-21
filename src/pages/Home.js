@@ -18,30 +18,167 @@ const Home = () => {
   //스크롤 위치
   // const [pos, setPos] = useState(0); //나중에 context APi 로 빼기
   // const [localPos, setLocalPos] = useState(pos);
-  const [snapE,setSnapE] = useState(false);
-  // const onScroll = () => {
+  const [snapE,setSnapE] = useState(true);
+console.log("렌더링됨")
+console.log("out sanpeE",snapE)
+const idx = useRef(0);
+const prePos = useRef(0);
+
+// const onScroll = (flag) => {
+  //   console.log("snap",snapE) //예전에 등록한 snape값이라 게속 false였음 밖에서 true고쳐줘도 ...이벤트에 등록된건 ㅅ정되지 않아.
   //   setPos(window.scrollY);
   // };
-  // useEffect(() => {
-  //   window.addEventListener('scroll',onScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll",onScroll);
-  //   }
-  // },[]);
-
-  //스크롤 trigger 지점
   const targets = useRef([]);
+  const testTarget = useRef(3);
   const triggerPos = targets.current.map((target,idx) => target.offsetTop);
+  const [scrolling,setScrolling] = useState(false);
+  const [stop,setStop] = useState(false);
+  console.log("out stop",stop)
+  // useEffect(() => { 
+    //   window.addEventListener('scroll',onScroll);
+    //   return () => {
+      //     window.removeEventListener("scroll",onScroll);
+      //   }
+      // },[]);\
+      
+      console.log("test targets!!",testTarget);
+      // const test = () 
+      // setTimeout(()=>{
+      //   console.log("targets!!",targets.current[1]);
+      //   targets.current[1].scrollIntoView({behavior:'smooth'});
+      // },5000);
+
+  // console.log("idx",idx.current);
+  // console.log("targets",targets.current[idx.current]);
+  const test = (callback) => {
+    console.log("이동해야지!")
+    // window.scrollTo({top:triggerPos[1],behavior:'smooth'});
+    console.log("target를 못?",targets.current[0]);
+    targets.current[0].scrollIntoView({behavior:'smooth'}); 
+    callback(true);
+  }
+
+  const waitScroll = () => {
+    return new Promise ((resolve,reject)=>{
+      console.log("다운중")
+      window.scrollTo({top:1800,behavior:'smooth'});
+      // console.log("inseid scrolling",scrolling) 이전 scrolling값
+      setTimeout(()=>{resolve(true)},500);
+      // setTimeout(()=>{resolve(true)},1000)
+      // resolve(true);
+      // setSnapE(true);
+    })
+  }
+
+  const callbackTest = (callback) => {
+    window.scrollTo({top:1800,behavior:'smooth'});
+    callback();
+  }
+  let scrollTimer;
+
+  useEffect(()=>{
+    console.log("stop effect")
+    if (stop) {
+      console.log("inside stop",stop);
+      document.body.classList.add("stop-scroll");
+    }
+    else {
+      document.body.classList.remove("stop-scroll")
+    } 
+  },[stop])
+
+  const handleScroll = async() => {
+      const pos = window.scrollY; 
+      console.log("prePos pos",prePos.current,pos); 
+      console.log("snapE",snapE)
+      if (prePos.current < pos && snapE) {
+        console.log("scroll down")
+        // console.log("snapeE",snapE)
+        // setSnapE(true);
+        // setIdx(prev => prev +1);
+        // test2();
+        console.log("1")
+        setSnapE(false);
+        console.log("2")
+        window.scrollTo({top:500,behavior:'smooth'});
+        setStop(true);
+        setTimeout(()=>{setSnapE(true);setStop(false)},500);
+        // await waitScroll();
+        // setSnapE(true);
+        console.log("3")
+        // setSnapE(true);
+        console.log("4")
+        // setTimeout(()=>{setSnapE(false)},100);
+        // console.log("다운중")
+        // var timer = setInterval(()=>{
+        //   clearInterval(timer);
+        // },300)
+  
+        // setSnapE(true);
+        // test2();
+        // test(setSnapE);
+  
+        // targets.current[1].scrollIntoView({behavior:'smooth'});
+        // setSnapE(false);
+      }  
+      else if (prePos.current > pos) {
+        // 
+        console.log("scroll up");
+        // window.scrollTo({top:triggerPos[0],behavior:'smooth'})
+      
+      }
+      prePos.current = pos;
+  }
+
+  useEffect(() => {
+    console.log("effec실행")
+    let timer;
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", ()=>{
+      clearTimeout(timer);
+      timer = setTimeout(()=>{
+        console.log("scroll end");
+        setScrolling(true);
+        console.log("scroll end?");
+      },100)
+    });
+    return () => window.removeEventListener("scroll", handleScroll);
+  },[snapE]);
+
+  const test2 = async() => {
+    console.log("test 시작")
+    // await targets.current[0].scrollIntoView({behavior:'smooth'}); 
+    await P();
+    
+    // window.scrollTo({top:triggerPos[0],behavior:'smooth'})
+    console.log("test 끝")
+
+    // window.scrollTo({top:triggerPos[0],behavior:'smooth'})
+    // setSnapE(false);
+
+  }
+  // setTimeout(()=>{setSnapE(true)},1000);
+  
+  const P = () => {
+    return new Promise ((resolve,reject)=>{
+      window.scrollTo({top:triggerPos[0],behavior:'smooth'})
+      console.log("스크롤")
+      setSnapE(true);
+      resolve();
+    })
+  }
+  //스크롤 trigger 지점
+
 
   // const scrollSnap = () => {
-  //   if(localPos<pos) {
+  //   if (localPos < pos) {
   //     //scrollDown
-  //     for (let i of triggerPos) {
-  //       if(pos<i) {
-  //         window.scrollTo({top:i, behavior:'auto'});
-  //         return;
-  //       }
+  //     if(pos>100 & pos<triggerPos[1]) {
+  //       setSnapE(true);
+  //       setTimeout(()=>{setSnapE(false)},1000);
+  //       targets.current[1].scrollIntoView({behavior:'smooth'})
   //     }
+
   //   }
   //   else if(localPos>pos) {
   //     //scrollUp
@@ -76,15 +213,19 @@ const Home = () => {
   // if (200<pos&&pos<triggerPos[1]) {
   //   window.scrollTo({top:triggerPos[0],behavior:'smooth'})
   // }
+  // console.log("out",snapE);
+  // console.log("pos는 ",pos);
 
-  setTimeout(()=>{setSnapE(true)},5000)
-  // console.log("snapeE",snapE)
-  if (snapE) {
-    targets.current[1].scrollIntoView({behavior:'smooth'})
-  }
+  // setTimeout(()=>{setSnapE(true);console.log("this is in set")},5000)
+  // // console.log("snapeE",snapE)
+  // if (snapE) {
+  //   console.log("instide",snapE)
+  //   targets.current[1].scrollIntoView({behavior:'smooth'})
+  // }
+
   return (
-    <div >
-      <div style={{scrollSnapAlign: 'start'}}>
+    <div>
+      <div style={{scrollSnapAlign: 'start'}} ref={testTarget}>
         <Video src={sample} texts={["텍스트 너머의 가치를","만들어 나갑니다."]} />
         <Navbar />
       </div>

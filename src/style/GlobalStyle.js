@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     color: black;
     text-decoration: none;
   }
+  .stop-scroll {
+    overflow: hidden;
+    touch-action: none; 
+  }
 `
 
 export default GlobalStyle;
