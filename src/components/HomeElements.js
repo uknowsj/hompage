@@ -111,20 +111,18 @@ const InquireBox = () => {
     </InquireContainer>
   )
 } 
-export const SectionCulture = ({title, discription, infoText}) => {
+export const SectionCulture = ({title, discription, text}) => {
   return (
     <Container center>
       <Title center>{title}</Title>
       <Content margin="72px" center width="1100px">
         <Wrapper>
         <MiddleTitle>{discription}</MiddleTitle>
-          <Text>
-            {infoText}
-          </Text>
-          <Button icon={shortcut}>
-            <img src={shortcut} alt="바로가기아이콘" style={{ width:'1rem', marginRight:'5px' }}/>
-            <Link to="/button">바로가기</Link>
-          </Button>
+        <TextStyle>{text}</TextStyle>
+        <Button icon={shortcut}>
+          <img src={shortcut} alt="바로가기아이콘" style={{ width:'1rem', marginRight:'5px' }}/>
+          <Link to="/button">바로가기</Link>
+        </Button>
         </Wrapper>
         <Img src={phoneImg} alt="cellPhone" width="600px"/>
       </Content>
@@ -140,9 +138,10 @@ export const SectionValue = ({title, middleTitle, Texts}) => {
       <Title>{title}</Title>
       <Content margin="32px">
         <Wrapper>
-          <Text margin="0px">
+          <TextStyle>{text1}</TextStyle>
+          {/* <Text margin="0px">
             {text1}
-          </Text>
+          </Text> */}
           <Bar/>
         </Wrapper>
         <div style={{background:'blue', width:'660px',height:'300px'}}>..</div>
@@ -150,15 +149,21 @@ export const SectionValue = ({title, middleTitle, Texts}) => {
       <Content style={{marginTop:'60px'}}>
         <Wrapper>
           <MiddleTitle size="26px">{mdTitle1}</MiddleTitle>
-          <Text margin="10px">{text2}</Text>
+          <TextStyle>{text2}</TextStyle>
+
+          {/* <Text margin="10px">{text2}</Text> */}
         </Wrapper>
         <Wrapper>
           <MiddleTitle size="26px">{mdTitle2}</MiddleTitle>
-          <Text margin="10px">{text3}</Text>
+          <TextStyle>{text3}</TextStyle>
+          
+          {/* <Text margin="10px">{text3}</Text> */}
         </Wrapper>
         <Wrapper>
           <MiddleTitle size="26px">{mdTitle3}</MiddleTitle>
-          <Text margin="10px">{text4}</Text>
+          <TextStyle>{text4}</TextStyle>
+          
+          {/* <Text margin="10px">{text4}</Text> */}
         </Wrapper>
       </Content>
     </Container>

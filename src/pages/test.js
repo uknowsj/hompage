@@ -1,11 +1,30 @@
-let type = true;
-let idx = 0;
-setTimeout(()=>{console.log("뭐야");type=false},100);
+import React,{useState,useRef,useEffect} from 'react'
 
-while(idx<5) {
-  console.log("나옴1")
-  console.log("idx",idx++);
-  console.log("나옴2")
+const Test = () => {
+  const [name,setName] = useState(''); 
+  const pos = useRef();
+  const onChange = (e) => {
+    console.log("value",e.target.value);
+    setName(e.target.value);
+  }
+  console.log("렌더링 됨")
+  console.log("out name",name);
+  console.log("out ref",pos);
+  
+  useEffect(()=>{
+    console.log("inner ref",pos);
+    
+  },[pos]);
+  return (
+    <div>
+      <input type='text' value={name} onChange={onChange}/>
+      <div style={{border:'1px solid red', width:'500px',height:'500px',marginTop:'300px'}}
+        ref={pos}
+      >
+        hello
+      </div>
+    </div>
+  )
 }
 
-//반복문이 계속돌아서 ... setTimeout 콜백함수가 js 스택에 못들어가는듯
+export default Test
