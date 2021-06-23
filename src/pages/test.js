@@ -2,27 +2,26 @@ import React,{useState,useRef,useEffect} from 'react'
 
 const Test = () => {
   const [name,setName] = useState(''); 
-  const pos = useRef();
+  const inputRef = useRef();
   const onChange = (e) => {
-    console.log("value",e.target.value);
     setName(e.target.value);
   }
   console.log("렌더링 됨")
-  console.log("out name",name);
-  console.log("out ref",pos);
+  console.log("inputRef : ",inputRef);
   
   useEffect(()=>{
-    console.log("inner ref",pos);
-    
-  },[pos]);
+    // 선택한 돔에 대한 코드
+    console.log("inputRef in useEffect",inputRef);
+  },[inputRef]);
+
   return (
     <div>
-      <input type='text' value={name} onChange={onChange}/>
-      <div style={{border:'1px solid red', width:'500px',height:'500px',marginTop:'300px'}}
-        ref={pos}
-      >
-        hello
-      </div>
+      <input 
+        type='text' 
+        value={name} 
+        onChange={onChange}
+        ref={inputRef}
+        />
     </div>
   )
 }

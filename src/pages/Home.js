@@ -2,91 +2,75 @@ import React, { useState, useEffect, useRef} from 'react'
 import Navbar from 'components/Navbar'
 import { Video } from 'components/Util'
 import sample from 'assets/videos/main.mp4';
-import Container from 'components/Container';
-import building from 'assets/images/building.jpg';
-import styled from 'styled-components'
-
-import {default as HomeComponent} from 'components/HomeElements';
 
 import { SectionCulture, SectionValue, SectionCompany} from 'components/HomeElements';
 
 
 const Home = () => {
-  // const scrollRef = useRef(null);
-  // useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
-
-
-  const [snapE,setSnapE] = useState(true);
+  const [snapE,setSnapE] = useState(false);
   const prePos = useRef(0);
   const idx = useRef(-1);
+  const targets = useRef([]);
   
-  console.log("렌더링됨")
-  console.log("out sanpeE",snapE)
-console.log("out idx",idx.current);
-
-
-const [stop,setStop] = useState(false);
-const targets = useRef([]);
-
-console.log("out stop",stop)
-console.log("out targets",targets)
-
-
-useEffect(()=>{
-  console.log("stop effect")
-  if (stop) {
-    console.log("inside stop",stop);
-    document.body.classList.add("stop-scroll");
-  }
-  else {
-    document.body.classList.remove("stop-scroll")
-  } 
-},[stop])
-
-  const handleScroll = () => {
-      const pos = window.scrollY; 
-      // console.log("prePos pos",prePos.current,pos); 
-      console.log("snapE",snapE)
-      if (prePos.current < pos && snapE) {
-        console.log("scroll down")
-       console.log("1")
-        setSnapE(false);
-        console.log("2")
-        console.log("idx",idx.current);
-        console.log("in targets",targets)
-        if(idx.current+1<=2){
-          idx.current+=1;
-          console.log("current",targets.current[idx.current])
-          window.scrollTo({top:targets.current[idx.current].offsetTop,behavior:'smooth'});
-        }
-        setStop(true);
-        setTimeout(()=>{setSnapE(true);setStop(false)},1000);
-        console.log("3")
-
-      }  
-      else if (prePos.current > pos && snapE) {
-        // 
-        console.log("scroll up");
-        console.log("끝까지옴!!!")
-        setSnapE(false)
-        window.scrollTo({top:0,behavior:'smooth'});
-        setStop(true)
-        setTimeout(()=>{setSnapE(true);setStop(false)},600);
-        idx.current=-1;
-
-        // window.scrollTo({top:triggerPos[0],behavior:'smooth'})
-      
-      }
-      prePos.current = pos;
-  }
-
   useEffect(() => {
-    console.log("effec실행")
-    let timer;
     window.addEventListener("scroll", handleScroll);
-
+    if (snapE) {
+      document.body.classList.add("stop-scroll");
+      console.log("stop scorll")
+    }
+    else {
+      document.body.classList.remove("stop-scroll")
+    } 
     return () => window.removeEventListener("scroll", handleScroll);
   },[snapE]);
+
+
+  console.log("out snapE",snapE);
+
+  let timer;
+  const handleScroll = (e) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer=null;
+        const pos = window.scrollY; 
+        console.log(prePos.current,' ',pos)
+        console.log("inside idx",idx.current);
+        if (prePos.current < pos && !snapE) {
+          console.log("scroll down")
+          setSnapE(true);
+    
+          e.preventDefault();
+          
+          if (idx.current < 2) {
+            window.scrollTo({top:targets.current[++idx.current].offsetTop,behavior:'smooth'});
+            // targets.current[0].scrollIntoView({behavior:'smooth', block: "end", inline: "nearest"})
+            console.log("moving down")
+          }
+          setTimeout(()=>{setSnapE(false)
+          
+          
+          },700);
+        }  
+        else if (prePos.current > pos && !snapE) {
+          console.log("scroll up")
+          setSnapE(true)
+          if (idx.current > 0) {
+            console.log("moving up")
+            window.scrollTo({top:targets.current[--idx.current].offsetTop,behavior:'smooth'});
+          }
+          else if (idx.current===0) {
+            console.log("moving up")
+    
+            window.scrollTo({top:0,behavior:'smooth'});
+            idx.current=-1;
+          } 
+          setTimeout(()=>{setSnapE(false)},700);
+        }
+        prePos.current = pos;
+      },200);
+    }
+  }
+
 
 
 
