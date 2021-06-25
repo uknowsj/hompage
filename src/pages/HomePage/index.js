@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef} from 'react'
 import Navbar from 'components/Navbar'
-import { Video } from 'components/Util'
+import { VideoBanner } from 'components/Util'
 import sample from 'assets/videos/main.mp4';
 
 import { SectionCulture, SectionValue, SectionCompany} from 'components/HomeElements';
@@ -46,10 +46,7 @@ const Home = () => {
             // targets.current[0].scrollIntoView({behavior:'smooth', block: "end", inline: "nearest"})
             console.log("moving down")
           }
-          setTimeout(()=>{setSnapE(false)
-          
-          
-          },700);
+          setTimeout(()=>{setSnapE(false)},600);
         }  
         else if (prePos.current > pos && !snapE) {
           console.log("scroll up")
@@ -64,7 +61,7 @@ const Home = () => {
             window.scrollTo({top:0,behavior:'smooth'});
             idx.current=-1;
           } 
-          setTimeout(()=>{setSnapE(false)},700);
+          setTimeout(()=>{setSnapE(false)},600);
         }
         prePos.current = pos;
       },200);
@@ -77,7 +74,7 @@ const Home = () => {
   return (
     <div>
       <div >
-        <Video src={sample} texts={["텍스트 너머의 가치를","만들어 나갑니다."]} />
+        <VideoBanner src={sample} texts={`텍스트 너머의 가치를\n만들어 나갑니다`} />
         <Navbar />
       </div>
       <div className="test" ref={(el)=>targets.current[0]=el}>

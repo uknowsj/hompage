@@ -15,10 +15,15 @@ const GlobalStyle = createGlobalStyle`
     color: black!important;
     /* scroll-behavior: smooth; */
   }
+
   body {
-    -ms-overflow-style: none; } 
-    ::-webkit-scrollbar { display: none;
+    -ms-overflow-style: none; 
   }
+
+  ::-webkit-scrollbar { 
+    display: none;
+  }
+  
   a {
     color: black;
     text-decoration: none;

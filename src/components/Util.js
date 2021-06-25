@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const BannerContainer = styled.div`
   overflow: clip;
@@ -17,18 +17,12 @@ const VideoWrapper = styled.div`
     width: 1920px;
   }
 
-  div {
+  div { //TextBox
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-
     width: fit-content;
-
-    font-size: 6.4rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
   }
 
   @media screen and (max-width:768px) {
@@ -42,19 +36,38 @@ const VideoWrapper = styled.div`
   }
 
 `
+export const TextStyle = styled.div`
+  ${
+    ({color, size, weight, align}) => {
+      return css`
+        color: ${color||'black'};
+        font-size: ${size||'1.6rem'};
+        font-weight: ${weight||'lighter'};
+        text-align: ${align||'left'};
+      `
+  }}
+  line-height: 1.5;
+  white-space: pre-line;
+`
 
-export const Video = ({src, texts}) => {
+export const TextBox = ({ size, weight, color, align, children }) => {
+  return (
+    <TextStyle size={size} weight={weight} color={color} align={align}>
+      { children }
+    </TextStyle>
+  )
+}
+
+export const VideoBanner = ({src, texts}) => {
   return (
     <BannerContainer>
       <VideoWrapper>
         <video muted autoPlay loop>
           <source src={src} type="video/mp4" />
         </video>
-        <div>
-          {
-            texts.map(text => (<p>{text}</p>))
-          }
-        </div>      
+        <TextBox size={'6.4rem'} weight={'bold'} color={'white'} align={'center'}>
+          {texts}
+        </TextBox>
       </VideoWrapper>
     </BannerContainer>
   )
@@ -76,3 +89,5 @@ export const Img = ({ src, alt, width}) => {
     </ImgContainer>
   )
 }
+
+

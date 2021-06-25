@@ -173,22 +173,6 @@ const Navbar = () => {
       window.removeEventListener("scroll",onScroll);
     };
   },[]);
-  // console.log("pos",position)
-  // useEffect(() => {
-  //   console.log("bf Pos",bfPosition)
-  //   console.log("pos",position)
-  //   if(bfPosition<position&&(position>=30 && position<=600)){
-  //     console.log("뿜!")
-  //     // console.log("bf Pos",bfPosition)
-  //     // console.log("pos",position)
-  //     window.scrollTo({top:'1800', behavior:'auto'})
-  //     setBfPosition(position);
-  //   }
-  // }, [position, bfPosition]);
-
-  // if(position<=700&&(position+30>=730&&position<=750)){
-  //   window.scrollTo({top:'1800', behavior:'auto'});
-  // }
 
   return (
     <>
