@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 
 const BannerContainer = styled.div`
   overflow: clip;
-  width: 100%;
+  width: 100vw;
+  position: relative;
 `
 const VideoWrapper = styled.div`
   position: relative;

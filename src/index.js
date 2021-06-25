@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Test from 'pages/Test'
+import TopSection from 'pages/HomePage/TopSection'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
     {/* <Test /> */}
+    {/* <TopSection /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

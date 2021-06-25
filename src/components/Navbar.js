@@ -5,7 +5,8 @@ import { Link as LinkR } from 'react-router-dom';
 import {DefaultLayout} from 'style/CommonStyle';
 
 const NavContainer = styled.div`
-  ${DefaultLayout}
+  /* ${DefaultLayout} */
+  width:980px;
   height: 60px;
   position: fixed;
   top: 0;
@@ -154,7 +155,6 @@ const Language = ({ clickLang, selected }) => {
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [position, setPosition] = useState(0); //scroll  
-  const [bfPosition, setBfPosition] = useState(position);  
   const [langs, setLang] = useState({
     lang:['KOR','ENG'],
     selected:'KOR'
