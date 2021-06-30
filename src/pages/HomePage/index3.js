@@ -10,7 +10,6 @@ const Home = () => {
   const [snapE,setSnapE] = useState(false);
   const prePos = useRef(0);
   const idx = useRef(-1);
-  const targets = useRef([]);
   
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

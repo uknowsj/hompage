@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import styled, { css } from 'styled-components';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link as LinkR } from 'react-router-dom';
-import {DefaultLayout} from 'style/CommonStyle';
+import React, { useState, useEffect, useContext } from 'react'
+import { Context } from 'context'
+import styled, { css } from 'styled-components'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { Link as LinkR } from 'react-router-dom'
+import {DefaultLayout} from 'style/CommonStyle'
 
 const NavContainer = styled.div`
-  /* ${DefaultLayout} */
-  width:980px;
+  width:100vw;
   height: 60px;
   position: fixed;
   top: 0;
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  justify-content: center;
+  
   background-color: transparent;
   font-size: 1.4rem;
   font-family: 'Spoqa Han Sans', sans-serif;
   color: white;
-  transition: .3s ease-out;
+  /* transition: .2s ease-out; */
 
   ${props => props.active &&
       css`
         background-color: white;
         color: black;
       `
+  }
+`
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width:1296px;
+
+  @media screen and (max-width:1296px) {
+    padding: 0 20px;
   }
 `
 
@@ -155,15 +165,14 @@ const Language = ({ clickLang, selected }) => {
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [position, setPosition] = useState(0); //scroll  
-  const [langs, setLang] = useState({
-    lang:['KOR','ENG'],
-    selected:'KOR'
-  });
-  
+
+  // 언어 선택
+  const {state:{language}, dispatch} = useContext(Context);
+
+  // 모바일 화면에서 햄버거 아이콘 선택
   const handleClick = () => setClick(!click);
-  const clickLang = (e) => {
-    setLang({...langs,selected:e.target.id});
-  }
+
+  // 스크롤 다운 시 네비 CSS 변경
   const onScroll = () => {
     setPosition(window.scrollY);
   }
@@ -174,31 +183,45 @@ const Navbar = () => {
     };
   },[]);
 
+
   return (
     <>
     <NavContainer active={position>=100?true:false}>
-      <Logo to="/">
-        VIEWCOMMZ
-      </Logo>
-      <Menu click={click}>
-        <MenuItem>
-          <LinkR to="/">COMPANY</LinkR>
-        </MenuItem>
-        <MenuItem>
-          <LinkR to="/business">BUSINESS</LinkR>
-        </MenuItem>
-        <MenuItem>
-          <a href="https://www.naver.com/">CONTENTS</a>
-        </MenuItem>
-      </Menu>
-      <Util>
-        <LanguageWrap click={click}>
-          <Language clickLang={clickLang} selected={langs.selected}/>
-        </LanguageWrap>
-        <MobileIcon onClick={handleClick} click={click}>
-          {click ? <FaTimes /> : <FaBars />}
-        </MobileIcon>
-      </Util>      
+      <Wrapper>
+        <Logo to="/">
+          VIEWCOMMZ
+        </Logo>
+        <Menu click={click}>
+          <MenuItem>
+            <LinkR to="/">COMPANY</LinkR>
+          </MenuItem>
+          <MenuItem>
+            <LinkR to="/business">BUSINESS</LinkR>
+          </MenuItem>
+          <MenuItem>
+            <a href="https://www.naver.com/">CONTENTS</a>
+          </MenuItem>
+        </Menu>
+        <Util>
+          <LanguageWrap click={click}>
+            <Language 
+              clickLang={
+                (e) => {
+                  dispatch({
+                    type:'CHANGE_LANGS',
+                    selected:e.target.id
+                  })
+                }
+              } 
+              selected={language.selected}
+            />
+          </LanguageWrap>
+          <MobileIcon onClick={handleClick} click={click}>
+            {click ? <FaTimes /> : <FaBars />}
+          </MobileIcon>
+        </Util>      
+
+      </Wrapper>
     </NavContainer>
     </>
   )

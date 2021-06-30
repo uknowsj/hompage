@@ -28,36 +28,18 @@ const VideoWrapper = styled.div`
 
   @media screen and (max-width:768px) {
     video {
-      width: 1000px;
+      object-position: -280px -150px;
+      /* width: 1000px; */
+      /* left: 25%;
+      transform: translate(-60%,-33%); */
     }
 
     div {
-      font-size: 3.2rem;
+      font-size: 3.6rem;
     }
   }
 
 `
-export const TextStyle = styled.div`
-  ${
-    ({color, size, weight, align}) => {
-      return css`
-        color: ${color||'black'};
-        font-size: ${size||'1.6rem'};
-        font-weight: ${weight||'lighter'};
-        text-align: ${align||'left'};
-      `
-  }}
-  line-height: 1.5;
-  white-space: pre-line;
-`
-
-export const TextBox = ({ size, weight, color, align, children }) => {
-  return (
-    <TextStyle size={size} weight={weight} color={color} align={align}>
-      { children }
-    </TextStyle>
-  )
-}
 
 export const VideoBanner = ({src, texts}) => {
   return (
@@ -73,6 +55,23 @@ export const VideoBanner = ({src, texts}) => {
     </BannerContainer>
   )
 }
+
+
+const BannerContainer2 = styled.div`
+
+`
+
+
+// export const VideoBanner2 = () => {
+//   return (
+
+//   )
+
+// }
+
+
+
+
 
 const ImgContainer = styled.div`
   width: ${({width}) => width};
@@ -92,3 +91,78 @@ export const Img = ({ src, alt, width}) => {
 }
 
 
+
+// Text Component
+export const TextStyle = styled.div`
+  ${
+    ({color, size, weight, align, lineHeight}) => {
+      return css`
+        color: ${color||'black'};
+        font-size: ${size||'1.6rem'};
+        font-weight: ${weight||'lighter'};
+        text-align: ${align||'left'};
+        line-height: ${lineHeight||'1.6'};
+      `
+  }}
+
+  white-space: pre-line;
+  word-break: keep-all;
+
+  @media screen and (max-width: 1296px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+`
+
+export const TextBox = ({ size, weight, color, align, lineHeight, children }) => {
+  return (
+    <TextStyle size={size} weight={weight} color={color} align={align} lineHeight={lineHeight}>
+      { children }
+    </TextStyle>
+  )
+}
+
+
+export const TitleStyle = styled.div`
+  font-size: ${({size}) => {
+    if (size === 'med') return '3.6rem';
+    else if (size === 'small') return '2.6rem';
+    else return '4.8rem';
+  }};
+  text-align:${({center}) => center&&'center'};
+  font-weight: 600;
+
+  letter-spacing: -1px;
+  white-space: pre-wrap;
+  word-break: keep-all;
+
+  @media screen and (max-width:768px) {
+    font-size: ${({size}) => {
+    if (size === 'med') return '2.2rem';
+    else return '3.6rem';
+  }};
+  }
+`
+export const TitleBox = ({children, size, center}) => {
+  return (
+    <TitleStyle size={size} center={center}>{children}</TitleStyle>
+  )
+}
+
+
+//Margin
+const MarginStyle = styled.div`
+
+  ${({dir, margin}) => css`
+    height: ${dir==='vertical'?margin:0};
+    width: ${dir==='horizontal'?margin:0};
+  `}
+`
+
+export const Marginer = ({dir,margin}) => {
+  return (
+    <MarginStyle dir={dir} margin={margin}></MarginStyle>
+  )
+}

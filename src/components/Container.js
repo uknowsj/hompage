@@ -18,16 +18,34 @@ const SectionStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 1296px;
+  border: 1px solid blue;
+  padding: 0 20px;
 
-  width: 980px;
+  /* ${({mobile}) => mobile&&css`
+    min-height: auto;
+    width: auto;
+    border: 2px solid green;
+  `} */
+
+  @media screen and (max-width:1296px) {
+    width: 100vw;
+  }
+
+  @media screen and (max-width:768px) {
+    width: 100vw;
+    /* min-height: auto; */
+    border: 1px solid aqua;
+  }
 
 ` 
-export const SectionContainer = ({children}) => {
+export const SectionContainer = ({children, mobile}) => {
   return (
-    <SectionStyle>{children}</SectionStyle>
+    <SectionStyle mobile={mobile}>{children}</SectionStyle>
   )  
 }
-
 
 const Container = ({ children, center }) => {
   return (

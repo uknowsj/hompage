@@ -1,18 +1,20 @@
-import { BrowserRouter, Route } from 'react-router-dom';
-import GlobalStyle from 'style/GlobalStyle';
-import Business from 'components/Business/Business';
-import HomePage from 'pages/HomePage';
+import { BrowserRouter, Route } from 'react-router-dom'
+import { Provider }  from 'context'
+import GlobalStyle from 'style/GlobalStyle'
+import Business from 'components/Business/Business'
+import HomePage from 'pages/HomePage'
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-    
-        <div className="App">
-          <Route exact path="/" component={HomePage}></Route>
-          <Route path="/business" component={Business}></Route>
-      </div>
+        <Provider>
+          <div className="App">
+            <Route exact path="/" component={HomePage}></Route>
+            <Route path="/business" component={Business}></Route>
+          </div>
+        </Provider>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default App
