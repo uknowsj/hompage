@@ -35,6 +35,7 @@ export const HomeKr = {
   },
   section3: {
     header: `작가의 밝은 미래,\n뷰컴즈가 함께 하겠습니다.`,
+    desc: `독자의 시선으로 콘텐츠을 제작하고 건전한 창작 문화를 활성화하기 위하여 시작된 뷰컴즈는 전자책 전문 제작·유통`,
     companyName: `뷰컴즈`,
     companyInfo: `서울특별시 서초구 동광로1길 99 4층\n070-7783-0904\ncontact@viewcommz.com`,
     inquiryTitle1: `문의하기`,
@@ -72,6 +73,7 @@ export const HomeEng = {
   },
   section3: {
     header: `작가의 밝은 미래,\n뷰컴즈가 함께 하겠습니다.`,
+    desc: `독자의 시선으로 콘텐츠을 제작하고 건전한 창작 문화를 활성화하기 위하여 시작된 뷰컴즈는 전자책 전문 제작·유통`,
     companyName: `뷰컴즈`,
     companyInfo: `서울특별시 서초구 동광로1길 99 4층\n070-7783-0904\ncontact@viewcommz.com`,
     inquiryTitle1: `문의하기`,
@@ -106,11 +108,15 @@ export const FooterKr = {
   copyright: `© 2019 by VIEWCOMMZ  All rights reserved`,
   externalLink: [
     {
-      name: 'contents',
+      name: 'CONTENTS',
       address: 'https://www.naver.com'
     },
     {
-      name: 'blog',
+      name: 'BLOG',
+      address: 'https://www.youtube.com/'
+    },
+    {
+      name: 'TWITTER',
       address: 'https://www.youtube.com/'
     }
   ]
@@ -142,11 +148,15 @@ export const FooterEng = {
   copyright: `© 2019 by VIEWCOMMZ  All rights reserved`,
   externalLink: [
     {
-      name: 'contents',
+      name: 'CONTENTS',
       address: 'https://www.naver.com'
     },
     {
-      name: 'blog',
+      name: 'BLOG',
+      address: 'https://www.youtube.com/'
+    },
+    {
+      name: 'TWITTER',
       address: 'https://www.youtube.com/'
     }
   ]

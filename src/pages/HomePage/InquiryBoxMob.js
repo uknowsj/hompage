@@ -6,7 +6,7 @@ const CustomButton = styled(StyledButton)`
   margin-top: 60px;
   border: 1px solid #adb5bd80; 
 `
-const FlexBox = styled.div`
+const InputBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,10 +44,10 @@ const StyledInput = styled.input`
   &:focus {
     outline:none;
     border: none;
-    border-bottom: 1px solid #FABE00;
+    border-bottom: 1px solid #343a40;
 
     ::placeholder {
-    color: #FABE00;
+    color: #343a40;
     }
     transition: .3s ease-out;
   }
@@ -70,17 +70,23 @@ const TextAreaStyled = styled.textarea`
   &:focus {
     outline:none;
     border: none;
-    border-bottom: 1px solid #FABE00;
+    border-bottom: 1px solid #343a40;
 
-    ::placeholder {
-    color: #FABE00;
-    }
   }
 `
+const FlexBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width:100%;
+`
+
 const InquiryBoxMob = ({children}) => {
   return (
-   <FlexBox>
-     {children}
+   <InputBox>
+     <FlexBox align="flex-start">
+      {children}
+     </FlexBox>
      <StyledInput type="text" name="name" placeholder="이름" />
      <StyledInput type="email" name="email" placeholder="이메일" />
      <StyledInput type="text" name="title" placeholder="제목" />
@@ -88,7 +94,7 @@ const InquiryBoxMob = ({children}) => {
      <CustomButton>
           문의하기
     </CustomButton>
-    </FlexBox>
+    </InputBox>
   )
 }
 

@@ -26,6 +26,8 @@ const NavContainer = styled.div`
         color: black;
       `
   }
+
+  z-index: 100;
 `
 const Wrapper = styled.div`
   display: flex;

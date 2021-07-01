@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react'
+import React, { useRef, useContext, useState, useEffect } from 'react'
 import { Context } from 'context'
 import { PageContainer } from 'components/Container'
 import TopSection from './TopSection'
@@ -17,9 +17,9 @@ const HomePage = () => {
   const {state:{language}} = useContext(Context);
   let langType = language.selected==='KOR'?HomeKr:HomeEng
 
-  const [snapE,setSnapE] = useState(false);
-  const prePos = useRef(0);
-  const idx = useRef(-1);
+  // const [snapE,setSnapE] = useState(false);
+  // const prePos = useRef(0);
+  // const idx = useRef(-1);
 
   
   // useEffect(() => {
@@ -126,7 +126,7 @@ const HomePage = () => {
             inquiryText={langType.section3.inquiryText}
           />
         </div>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </PageContainer>
       
   )

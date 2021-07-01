@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextBox, TitleBox } from 'components/Util'
+import { ImageBackground, TextBox, TitleBox } from 'elements'
 import styled, {css} from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { SectionContainer } from 'components/Container'
@@ -8,8 +8,7 @@ import phoneImg from 'assets/images/phone.png'
 import { Link } from 'react-router-dom'
 import shortcut from 'assets/images/shortcut.svg'
 import Button,{StyledButton} from 'components/Button'
-import building from 'assets/images/building.jpg'
-import map from 'assets/images/map.jpg'
+import map from 'assets/images/map.png'
 import InquiryBoxMob from './InquiryBoxMob'
 
 const Flexbox = styled.div`
@@ -24,6 +23,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: ${({align}) => align||'left'};
   border: 1px solid red;
+  margin-top:60px;
 `
 
 //가로길이에 따라 줄어드는 이미지
@@ -119,13 +119,7 @@ export const MobSection2 = ({header, desc, src}) => {
    </SectionContainer>
   )
 }
-export const Bar2 = styled.div`
-  width: 25px;
-  height: 4px;
-  background-color: black;
-  margin-top: 5px;
-  margin-bottom: 30px;
-`
+
 export const MobSection3 = ({
     header,companyName,companyInfo,
     inquiryTitle1,inquiryTitle2,inquiryText
@@ -137,39 +131,30 @@ export const MobSection3 = ({
   return (
     <SectionContainer>
       <Flexbox>
-      <Marginer dir="vertical" margin="100px"/>
-      <TitleBox>{header}</TitleBox>
-      <Marginer dir="vertical" margin="30px"/>
-      <Wrapper>
-        {/* 지도 */}
-        <div style={{
-          position:'relative',width:'100%',height:'300px',
-          backgroundImage:`url(${map})`,
-          backgroundRepeat:'no-repeat',backgroundPosition:'center -200px',objectFit:'cover'}}>
-        </div>
-      </Wrapper>
-      <Marginer dir="vertical" margin="60px"/>
-      <Wrapper>
-        <TitleBox size="med">{companyName}</TitleBox>
-        <Marginer dir="vertical" margin="15px"/>
-        <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
-        <Marginer dir="vertical" margin="60px"/>
-      </Wrapper>
-      <Marginer dir="vertical" margin="60px"/>
-      <Wrapper>
-        <InquiryBoxMob>
+        <Marginer dir="vertical" margin="100px"/>
+        <Wrapper>
+          <TitleBox>{header}</TitleBox>
+          <Marginer dir="vertical" margin="30px"/>
+          <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
+        </Wrapper>
+        <Wrapper>
+          <ImageBackground src={map} height="200px"/>
+        </Wrapper>
+        <Wrapper>
+          <TitleBox size="med">{companyName}</TitleBox>
+          <Marginer dir="vertical" margin="15px"/>
+          <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
+        </Wrapper>
+        <Wrapper>
           <TitleBox size="med">{inquiryTitle1}</TitleBox>
+          <Marginer dir="vertical" margin="15px"/>
           <TextBox size="1.6rem" lineHeight="2" weight="600">{inquiryTitle2}</TextBox>
           <TextBox size="1.4rem" lineHeight="2">{inquiryText}</TextBox>
-          <Marginer dir="vertical" margin="30px"/>
-        </InquiryBoxMob>
-      </Wrapper>
+          <Marginer dir="vertical" margin="60px"/>
+          <InquiryBoxMob />
+        </Wrapper>
       </Flexbox>
       <Marginer dir="vertical" margin="60px"/>
-
-    
     </SectionContainer>
-
-
   )
 }
