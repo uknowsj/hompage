@@ -2,8 +2,8 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 
 const Grid = (props) => {
-  const { isFlex, align, justify, width, margin, padding, bg, children } = props
-  const styles = { isFlex, align, justify, width, margin, padding, bg }
+  const { isFlex, direction, align, justify, width, margin, padding, bg, children } = props
+  const styles = { isFlex, direction, align, justify, width, margin, padding, bg }
   return (
     <>
       <GridBox {...styles}>{children}</GridBox>
@@ -13,25 +13,35 @@ const Grid = (props) => {
 
 Grid.defaultProps = {
   children: null,
+  isFelx: false,
   width: "100%",
-  padding: false,
-  margin: false,
-  bg: false,
+  padding: 0,
+  margin: '15px 0',
+  bg: 'none',
+  direction: 'row',
+  align: 'center',
+  justify: 'space-between',
 }
 
 const GridBox = styled.div`
+  /* border: 1px solid red; */
+
   width: ${(props) => props.width};
   height: 100%;
   box-sizing: border-box;
-  ${(props) => (props.padding ? `padding: ${props.padding};` : "")};
-  ${(props) => (props.margin ? `margin-top: ${props.margin}; margin-bottom: ${props.margin}` : "")};
-  ${(props) => (props.bg ? `padding: ${props.bg};` : "")};
+  ${(props) => css`
+    padding: ${props.padding};
+    margin: ${props.margin};
+    background: ${props.bg};
+  `};
+  
   ${(props) => props.isFlex&&
     css`
       display: flex;
+      flex-direction: ${props.direction}
       flex-wrap:wrap;
-      align-items: ${props.align||'center'};
-      justify-content: ${props.jusify||'space-between'};
+      align-items: ${props.align};
+      justify-content: ${props.jusify};
   `}
 
   

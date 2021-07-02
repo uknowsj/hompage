@@ -1,17 +1,17 @@
-import { SectionContainer } from 'components/Container'
-import { TextBox, TitleBox } from 'components/Util'
 import React from 'react'
 import styled, {css} from 'styled-components'
-import shortcut from 'assets/images/shortcut.svg'
+import { useMediaQuery } from 'react-responsive'
+import { Grid, ImageBackground, ImgBox, 
+  Marginer, TextBox, TitleBox  } from 'elements'
+import TextCard from 'components/TextCard'
 import Button,{StyledButton} from 'components/Button'
+import { SectionContainer } from 'components/Container'
+import InquireBox from './InquiryBox'
+import shortcut from 'assets/images/shortcut.svg'
 import { Link } from 'react-router-dom'
-import { Img, Marginer } from 'components/Util'
 import phoneImg from 'assets/images/phone.png'
 import building from 'assets/images/building.jpg'
-import InquireBox from './InquiryBox'
-import { useMediaQuery } from 'react-responsive'
-
-
+  
 const FlexBox = styled.div`
   display:flex;
   border: 1px solid purple;
@@ -51,7 +51,7 @@ export const Section1 = ({header,title,desc}) => {
           </Button>
         </Wrapper>
         <Wrapper>
-          <Img src={phoneImg} alt="cellPhone" width="600px"/>
+          <ImgBox src={phoneImg} alt="cellPhone" width="600px"/>
         </Wrapper>
       </FlexBox>
     </SectionContainer>
@@ -71,32 +71,34 @@ export const Section2 = ({header,desc,cards}) => {
   if (!isDesktop) return null;
   return (
     <SectionContainer>
-      <FlexBox justify="flex-start">
+      <Grid>
         <TitleBox>{header}</TitleBox>
-      </FlexBox>
+      </Grid>
+      <Grid>
+        <Grid isFlex align="flex-start">
+          <Grid margin="15px 20px 15px 0">
+            <TextBox>{desc}</TextBox>
+            <Bar />
+          </Grid>
+          <Grid>
+            <div style={{background:'blue', width:'660px',height:'289px'}}>..</div>
+          </Grid>
+        </Grid>
+      </Grid>
       <Marginer dir="vertical" margin="30px"/>
-      <FlexBox align="flex-start">
-        <Wrapper>
-          <TextBox>{desc}</TextBox>
-          <Bar />
-        </Wrapper>
-        <Wrapper>
-        <div style={{background:'blue', width:'660px',height:'289px'}}>..</div>
-        </Wrapper>
-      </FlexBox>
       <Marginer dir="vertical" margin="110px"/>
       <FlexBox justify="flex-start">
         {
-          cards.map((card,idx)=>{
+          cards.map((card)=>{
             return (
-              <>
-              <Wrapper key={card.idx}>
-                <TitleBox size="small">{card.title}</TitleBox>
-                <Marginer dir="vertical" margin="15px"/>
-                <TextBox size="1.4rem">{card.text}</TextBox>
-              </Wrapper>
-              <Marginer dir="horizontal" margin={card.idx!=2?"230px":"100px"}/>
-              </>
+              <Grid key={card.idx}>
+                <TextCard  
+                  title_size="small" 
+                  text_size="1.4rem"
+                  title={card.title}
+                  text={card.text}
+                />
+              </Grid>
             )
           })
         }
@@ -123,12 +125,8 @@ export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTi
       <Marginer dir="vertical" margin="60px"/>
       <TitleBox center>{header}</TitleBox>
       <Marginer dir="vertical" margin="60px"/>
-      <Wrapper>
-        <div style={{position:'relative',width:'100vw',height:'300px',backgroundImage:`url(${building})`,backgroundRepeat:'no-repeat',backgroundSize:'100%',backgroundPosition:'center -200px'}}>
-          {/* <img src={building} alt="dd" style={{width:'100%'}}/> */}
-        </div>
-      </Wrapper>
-      <Marginer dir="vertical" margin="60px"/>
+      <ImageBackground src={building} height="600px"/>
+      <Marginer dir="vertical" margin="640px"/>
       <FlexBox width="1000px">
         <Wrapper>
           <TextBox weight="600">{companyName}</TextBox>

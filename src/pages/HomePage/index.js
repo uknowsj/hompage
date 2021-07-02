@@ -113,6 +113,7 @@ const HomePage = () => {
             header={langType.section3.header}
             companyName={langType.section3.companyName}
             companyInfo={langType.section3.companyInfo}
+            desc={langType.section3.desc}
             inquiryTitle1={langType.section3.inquiryTitle1}
             inquiryTitle2={langType.section3.inquiryTitle2}
             inquiryText={langType.section3.inquiryText}
@@ -121,6 +122,7 @@ const HomePage = () => {
             header={langType.section3.header}
             companyName={langType.section3.companyName}
             companyInfo={langType.section3.companyInfo}
+            desc={langType.section3.desc}
             inquiryTitle1={langType.section3.inquiryTitle1}
             inquiryTitle2={langType.section3.inquiryTitle2}
             inquiryText={langType.section3.inquiryText}

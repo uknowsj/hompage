@@ -1,11 +1,8 @@
 import React, { useContext } from 'react'
-import { Context } from 'context'
-import { SectionContainer } from './Container'
 import styled, { css } from 'styled-components'
-import { Marginer } from 'components/Util'
+import { Context } from 'context'
 import { FooterKr, FooterEng } from 'data'
-import Grid from 'elements/Grid'
-import { TextBox, TitleBox } from 'elements/TextBox'
+import { Grid, TextBox, TitleBox, Marginer } from 'elements'
 import { useMediaQuery } from 'react-responsive'
 
 const Footer = () => {

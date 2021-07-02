@@ -1,14 +1,14 @@
 import React from 'react'
-import { ImageBackground, TextBox, TitleBox } from 'elements'
+import { ImageBackground, TextBox, TitleBox, Marginer } from 'elements'
 import styled, {css} from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { SectionContainer } from 'components/Container'
-import { Img, Marginer } from 'components/Util'
 import phoneImg from 'assets/images/phone.png'
 import { Link } from 'react-router-dom'
 import shortcut from 'assets/images/shortcut.svg'
 import Button,{StyledButton} from 'components/Button'
 import map from 'assets/images/map.png'
+import building from 'assets/images/building.jpg'
 import InquiryBoxMob from './InquiryBoxMob'
 
 const Flexbox = styled.div`
@@ -121,7 +121,7 @@ export const MobSection2 = ({header, desc, src}) => {
 }
 
 export const MobSection3 = ({
-    header,companyName,companyInfo,
+    header,companyName,companyInfo,desc,
     inquiryTitle1,inquiryTitle2,inquiryText
   }) => {
   
@@ -135,15 +135,12 @@ export const MobSection3 = ({
         <Wrapper>
           <TitleBox>{header}</TitleBox>
           <Marginer dir="vertical" margin="30px"/>
-          <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
-        </Wrapper>
-        <Wrapper>
-          <ImageBackground src={map} height="200px"/>
-        </Wrapper>
-        <Wrapper>
+          <TextBox size="1.4rem" lineHeight="2">{desc}</TextBox>
+          <ImageBackground src={building} height="200px"/>
           <TitleBox size="med">{companyName}</TitleBox>
           <Marginer dir="vertical" margin="15px"/>
           <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
+          <ImageBackground src={map} height="200px" margin="50px 0 0 0"/>
         </Wrapper>
         <Wrapper>
           <TitleBox size="med">{inquiryTitle1}</TitleBox>

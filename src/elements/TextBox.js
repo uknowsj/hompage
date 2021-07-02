@@ -13,23 +13,30 @@ export const TextBox = (props) => {
 }
 
 TextBox.defaultProps = {
-  size: '1.6rem',
+  size: 'med',
   weight: 'lighter',
   color: 'black',
   align: 'left',
   lineHeight: '1.6',
+  fontWeight: ''
 }
 
 const TextStyle = styled.div`
   ${
-    ({color, size, weight, align, lineHeight, font}) => {
+    ({color, size, weight, align, lineHeight, font, fontWeight}) => {
+      let _size = '1.6rem';
+      if (size === 'big') _size = '1.8rem';
+      else if (size === 'small') _size = '1.4rem';
+  
       return css`
         color: ${color};
-        font-size: ${size};
+        font-size: ${_size};
         font-weight: ${weight};
         text-align: ${align};
         line-height: ${lineHeight};
         font-family: ${font==='spoka'?'Spoqa Han Sans':'inherit'};
+        font-weight: ${fontWeight};
+        letter-spacing: -1px;
       `
   }}
 
@@ -38,18 +45,39 @@ const TextStyle = styled.div`
 `
 
 // 타이틀
-export const TitleStyle = styled.div`
+export const TitleBox = (props) => {
+  const { size, color, center, lineHeight, children } = props
+  const styles = { size, color, center, lineHeight }
+  return (
+    <TitleStyle {...styles}>
+      {children}
+    </TitleStyle>
+  )
+}
+
+TitleBox.defaultProps = {
+  children: null,
+  size: 'default',
+  center: false,
+  color: 'black',
+  lineHeight: '1.6'
+}
+
+const TitleStyle = styled.div`
   font-size: ${({size}) => {
-    if (size === 'med') return '3.6rem';
+    if (size === 'big') return '6.4rem'
+    else if (size === 'med') return '3.6rem';
     else if (size === 'small') return '2.6rem';
     else return '4.8rem';
   }};
   text-align:${({center}) => center&&'center'};
   font-weight: 600;
+  color: ${({color}) => color};
 
   letter-spacing: -1px;
   white-space: pre-wrap;
   word-break: keep-all;
+  line-height: ${({lineHeight}) => lineHeight};
 
   @media screen and (max-width:768px) {
     font-size: ${({size}) => {
@@ -66,8 +94,4 @@ export const TitleStyle = styled.div`
   }
 
 `
-export const TitleBox = ({children, size, center}) => {
-  return (
-    <TitleStyle size={size} center={center}>{children}</TitleStyle>
-  )
-}
+

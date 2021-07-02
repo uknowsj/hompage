@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Context } from 'context'
 import { SectionContainer } from 'components/Container'
-import { VideoBanner } from 'components/Util'
+import { VideoBanner } from 'elements'
 import sample from 'assets/videos/main.mp4'
 import Navbar from 'components/Navbar'
 import { BannerKr, BannerEng } from 'data'
