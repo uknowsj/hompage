@@ -1,6 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { TextBox, TitleBox } from 'elements'
+import { FaRegPlayCircle } from 'react-icons/fa'
+
+import {useState} from 'react'
 
 // 메인페이지 영상 배너
 export const VideoBanner = ({src, texts}) => {
@@ -56,19 +59,59 @@ const VideoWrapper = styled.div`
 
 // 일반 비디오 컨텐츠
 export const VideoBox = (props) => {
-  const { src, width, height } = props;
+  const { src, width, height, isClick } = props;
 
   return (
-    <VideoContaienr>
-      <video {...props} type="video/mp4" controls></video>
+    <VideoContaienr isClick={isClick}>
+      <VideoPlayButton isClick={isClick}>
+        <FaRegPlayCircle size="10rem"/>
+      </VideoPlayButton>
+      <video {...props} type="video/mp4" controls
+        width='100%'
+      ></video>
     </VideoContaienr>
   )
 }
 
-VideoBox.defaultProps = {
+// VideoBox.defaultProps = {
 
-}
+//   isClick:false,
+// }
 
 const VideoContaienr = styled.div`
+  width: 660px;
+  border: 1px solid red;
+  position: relative;
+  ${(props) => props.isClick&&
+    css`
+        width: 100%;
+        transition: .3s ease-in-out;
+    `
+  }
+`
+// play 버튼
+const VideoPlayButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff30;
+  color: white;
 
+  svg {
+    cursor: pointer;
+    z-index: 100;
+  }
+  ${(props) => {
+    console.log("props", props.isClick);
+    return props.isClick&&css`
+      display: none;
+      &:hover {
+        display: block;
+      }
+    `
+  }}
+  
 `

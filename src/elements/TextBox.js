@@ -26,8 +26,10 @@ const TextStyle = styled.div`
     ({color, size, weight, align, lineHeight, font, fontWeight}) => {
       let _size = '1.6rem';
       if (size === 'big') _size = '1.8rem';
+      else if (size === 'med') _size = '1.6rem';
       else if (size === 'small') _size = '1.4rem';
-  
+      else _size= size; //custom
+
       return css`
         color: ${color};
         font-size: ${_size};

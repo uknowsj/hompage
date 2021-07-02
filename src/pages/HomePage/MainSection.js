@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, {css} from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { Grid, ImageBackground, ImgBox, 
-  Marginer, TextBox, TitleBox  } from 'elements'
+  Marginer, TextBox, TitleBox, VideoBox } from 'elements'
 import TextCard from 'components/TextCard'
 import Button,{StyledButton} from 'components/Button'
 import { SectionContainer } from 'components/Container'
@@ -11,7 +11,8 @@ import shortcut from 'assets/images/shortcut.svg'
 import { Link } from 'react-router-dom'
 import phoneImg from 'assets/images/phone.png'
 import building from 'assets/images/building.jpg'
-  
+import main from 'assets/videos/main.mp4'
+
 const FlexBox = styled.div`
   display:flex;
   border: 1px solid purple;
@@ -65,10 +66,19 @@ export const Bar = styled.div`
   margin-top: 30px;
 `
 
+// SECTION 2
 export const Section2 = ({header,desc,cards}) => {
-  const isDesktop = useMediaQuery({ minWidth: 1296 });
+  const isDesktop = useMediaQuery({ minWidth: 1296 })
+  // 영상이 클릭되면 desc 부분 사라짐
+  const [click, setClick] = useState(false)
+  const handleClick = () => {
+    console.log("클릭됨")
+    setClick(!click);
+  }
 
-  if (!isDesktop) return null;
+  // if (!isDesktop) return null;
+  
+  
   return (
     <SectionContainer>
       <Grid>
@@ -76,18 +86,21 @@ export const Section2 = ({header,desc,cards}) => {
       </Grid>
       <Grid>
         <Grid isFlex align="flex-start">
-          <Grid margin="15px 20px 15px 0">
+          <Grid margin="15px 20px 0 0">
             <TextBox>{desc}</TextBox>
             <Bar />
           </Grid>
           <Grid>
-            <div style={{background:'blue', width:'660px',height:'289px'}}>..</div>
+            <VideoBox 
+              onClick={handleClick}
+              isClick={click} 
+              src={main} 
+            />
           </Grid>
         </Grid>
       </Grid>
       <Marginer dir="vertical" margin="30px"/>
-      <Marginer dir="vertical" margin="110px"/>
-      <FlexBox justify="flex-start">
+      <Grid isFlex justify="flex-start" wrap="no wrap">
         {
           cards.map((card)=>{
             return (
@@ -102,7 +115,7 @@ export const Section2 = ({header,desc,cards}) => {
             )
           })
         }
-      </FlexBox>
+      </Grid>
     </SectionContainer>
   )  
 }
@@ -115,6 +128,7 @@ export const Bar2 = styled.div`
   margin-bottom: 30px;
 `
 //1296
+// SECTION 3
 export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTitle2,inquiryText}) => {
   const isDesktop = useMediaQuery({ minWidth: 500 });
 

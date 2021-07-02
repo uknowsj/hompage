@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const Footer = () => {
   const {state:{language}} = useContext(Context)
-  const isMobile = useMediaQuery({ maxWidth: 500 })
+  const isMobile = useMediaQuery({ maxWidth: 500 }) 
   let data = language.selected==='KOR'?FooterKr:FooterEng
   const fontSize1 = isMobile?'1.3rem':'1.4rem'
   const fontSize2 = isMobile?'1.2rem':'1.4rem'
