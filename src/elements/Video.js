@@ -79,14 +79,21 @@ export const VideoBox = (props) => {
 // }
 
 const VideoContaienr = styled.div`
-  width: 660px;
+  width: 100%;
   border: 1px solid red;
   position: relative;
-  ${(props) => props.isClick&&
-    css`
-        width: 100%;
-        transition: .3s ease-in-out;
-    `
+  transition: all 1s ease-in-out;
+
+  ${(props) => props.isClick?
+      css`
+      width: 200%;
+      /* position: absolute; */
+      transition: all 1s ease-in-out;
+      border:1px solid blue;
+    `:css`
+    width: 100%;
+  `
+
   }
 `
 // play 버튼

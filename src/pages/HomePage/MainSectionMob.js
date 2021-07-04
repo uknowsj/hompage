@@ -125,7 +125,7 @@ export const MobSection3 = ({
     inquiryTitle1,inquiryTitle2,inquiryText
   }) => {
   
-  const isMobile = useMediaQuery({ maxWidth: 499 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   if (!isMobile) return null;
 
   return (
@@ -136,11 +136,11 @@ export const MobSection3 = ({
           <TitleBox>{header}</TitleBox>
           <Marginer dir="vertical" margin="30px"/>
           <TextBox size="1.4rem" lineHeight="2">{desc}</TextBox>
-          <ImageBackground src={building} height="200px"/>
+          <ImageBackground src={building} height="300px"/>
           <TitleBox size="med">{companyName}</TitleBox>
           <Marginer dir="vertical" margin="15px"/>
           <TextBox size="1.4rem" lineHeight="2">{companyInfo}</TextBox>
-          <ImageBackground src={map} height="200px" margin="50px 0 0 0"/>
+          <ImageBackground src={map} height="300px" margin="50px 0 0 0"/>
         </Wrapper>
         <Wrapper>
           <TitleBox size="med">{inquiryTitle1}</TitleBox>

@@ -66,9 +66,23 @@ export const Bar = styled.div`
   margin-top: 30px;
 `
 
+const VideoWrapper = styled.div`
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  
+  ${({isClick}) =>isClick&&css`
+  
+    &> div:nth-child(1) {
+      display:none;
+    }
+  `}
+`
+
 // SECTION 2
 export const Section2 = ({header,desc,cards}) => {
-  const isDesktop = useMediaQuery({ minWidth: 1296 })
+  const isDesktop = useMediaQuery({ minWidth: 769 })
   // 영상이 클릭되면 desc 부분 사라짐
   const [click, setClick] = useState(false)
   const handleClick = () => {
@@ -76,7 +90,7 @@ export const Section2 = ({header,desc,cards}) => {
     setClick(!click);
   }
 
-  // if (!isDesktop) return null;
+  if (!isDesktop) return null;
   
   
   return (
@@ -85,19 +99,16 @@ export const Section2 = ({header,desc,cards}) => {
         <TitleBox>{header}</TitleBox>
       </Grid>
       <Grid>
-        <Grid isFlex align="flex-start">
+        <VideoWrapper isClick={click}>
           <Grid margin="15px 20px 0 0">
             <TextBox>{desc}</TextBox>
             <Bar />
           </Grid>
-          <Grid>
-            <VideoBox 
+            <VideoBox isClick={click}
               onClick={handleClick}
-              isClick={click} 
               src={main} 
             />
-          </Grid>
-        </Grid>
+        </VideoWrapper>
       </Grid>
       <Marginer dir="vertical" margin="30px"/>
       <Grid isFlex justify="flex-start" wrap="no wrap">
@@ -130,7 +141,7 @@ export const Bar2 = styled.div`
 //1296
 // SECTION 3
 export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTitle2,inquiryText}) => {
-  const isDesktop = useMediaQuery({ minWidth: 500 });
+  const isDesktop = useMediaQuery({ minWidth: 769 });
 
   if (!isDesktop) return null;
 
