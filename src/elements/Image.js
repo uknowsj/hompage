@@ -27,9 +27,9 @@ const BackgroundStyled = styled.div`
 `
 
 //일반 이미지 컨테이너
-export const ImgBox = ({ src, alt, width}) => {
+export const ImgBox = ({ src, alt, width, height}) => {
   return (
-    <ImgContainer width={width}>
+    <ImgContainer width={width} height={height}>
       <img src={src} alt={alt} />
     </ImgContainer>
   )
@@ -37,6 +37,7 @@ export const ImgBox = ({ src, alt, width}) => {
 
 ImgBox.defaultProps = {
   width: '100%',
+  height: 'inherit',
   alt: '이미지 설명',
   src: 'null',
   isFlex: false,
@@ -44,7 +45,7 @@ ImgBox.defaultProps = {
 const ImgContainer = styled.div`
   display: ${(isFlex) => isFlex&&'flex'};
   width: ${({width}) => width};
-  height: inherit;
+  height: ${({height}) => height};
   overflow: hidden;
   img {
     width: 100%;

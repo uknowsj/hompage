@@ -17,7 +17,7 @@ Grid.defaultProps = {
   direction: 'row',
   align: 'center',
   justify: 'space-between',
-  wrap: 'wrap',
+  wrap: 'no wrap',
   width: "100%",
   padding: 0,
   margin: '15px 0',
@@ -27,7 +27,7 @@ Grid.defaultProps = {
 }
 
 const GridBox = styled.div`
-  /* border: 1px solid red; */
+  border: 1px solid red;
   display: ${(props) => props.display&&'none'};
   width: ${(props) => props.width};
   height: 100%;

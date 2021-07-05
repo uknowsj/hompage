@@ -18,7 +18,7 @@ const SectionStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: ${(props) => props.height||'100vh'};
   width: 1296px;
   padding: 0 20px;
 
@@ -33,10 +33,10 @@ const LongSectionStyle = styled(SectionStyle)`
   padding: unset;
 `
 
-export const SectionContainer = ({ children, mobile, isLong }) => {
+export const SectionContainer = ({ children, mobile, isLong, height }) => {
   return (
     isLong?
     <LongSectionStyle mobile={mobile}>{children}</LongSectionStyle>
-    :<SectionStyle mobile={mobile}>{children}</SectionStyle>
+    :<SectionStyle mobile={mobile} height={height}>{children}</SectionStyle>
   )  
 }

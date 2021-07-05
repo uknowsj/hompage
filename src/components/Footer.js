@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Marginer dir="vertical" margin="60px"></Marginer>
-      <Grid width="100%" isFlex align="flex-end" flex> 
+      <Grid width="100%" isFlex align="flex-end" wrap="wrap"> 
         <Wrapper>
           <Logo>Viewcommz</Logo>
           <Marginer dir="vertical" margin="20px"/>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Provider }  from 'context'
 import GlobalStyle from 'style/GlobalStyle'
-import Business from 'components/Business/Business'
+import Business from 'pages/Business'
 import HomePage from 'pages/HomePage'
 function App() {
   return (
