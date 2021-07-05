@@ -1,6 +1,6 @@
 import { PageContainer } from 'components/Container'
 import React from 'react'
-import { Section1 } from './MainSection'
+import { Section1, Section2 } from './MainSection'
 import TopSection from './TopSection'
 
 const Business = () => {
@@ -8,6 +8,7 @@ const Business = () => {
     <PageContainer>
       <TopSection />
       <Section1 />      
+      <Section2 />      
     </PageContainer>
   )
 }
