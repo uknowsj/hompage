@@ -19,7 +19,7 @@ const BackgroundStyled = styled.div`
   position: relative;
   width: 100vw;
   height: ${(props) => props.height};
-  left: calc(-50vw + 50%);
+  left: ${(props) => props.left&&'calc(-50vw + 50%)'};
   margin: ${(props) => props.margin};
   background-image: url(${(props)=>props.src});
   background-repeat: no-repeat;
@@ -34,7 +34,15 @@ export const ImgBox = ({ src, alt, width}) => {
     </ImgContainer>
   )
 }
+
+ImgBox.defaultProps = {
+  width: '100%',
+  alt: '이미지 설명',
+  src: 'null',
+  isFlex: false,
+}
 const ImgContainer = styled.div`
+  display: ${(isFlex) => isFlex&&'flex'};
   width: ${({width}) => width};
   height: inherit;
   overflow: hidden;
@@ -43,3 +51,23 @@ const ImgContainer = styled.div`
   }
 `
 
+
+
+// //가로길이에 따라 줄어드는 이미지
+// const ImgBox = styled.div`
+//   background-image: url(${({url})=>url||null});
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+//   background-position: center center;
+
+//   width: 600px;
+//   height: 371px;
+
+//   @media screen and (max-width:768px) {
+//     width: 330px;
+//     height: 205px;
+
+//     max-width: 100vw;
+//   }
+
+// ` 

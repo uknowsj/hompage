@@ -2,7 +2,7 @@ import React, { useRef, useContext, useState, useEffect } from 'react'
 import { Context } from 'context'
 import { PageContainer } from 'components/Container'
 import TopSection from './TopSection'
-import { Section1, Section2, Section3 } from './MainSection'
+import { Section0, Section1, Section2, Section3 } from './MainSection'
 
 //모바일 컴포넌트
 import { MobSection1, MobSection2, MobSection3 } from './MainSectionMob'
@@ -83,6 +83,9 @@ const HomePage = () => {
         {/* 수정필요 forwardRef? 전역변수 -> 자식컴포에서 수정? */}
         <div ref={(el)=>targets.current[0]=el}>  
           <TopSection/>
+        </div>
+        <div ref={(el)=>targets.current[0]=el}>  
+          <Section0/>
         </div>
         <div ref={(el)=>targets.current[1]=el}>
           <Section1 

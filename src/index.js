@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import TopSection from 'pages/HomePage/TopSection'
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    {/* <Test /> */}
-    {/* <TopSection /> */}
+    {/* <GlobalStyle />
+    <HomeTest /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

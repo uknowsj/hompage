@@ -4,9 +4,9 @@ import { SectionContainer } from 'components/Container'
 import { VideoBanner } from 'elements'
 import sample from 'assets/videos/main.mp4'
 import Navbar from 'components/Navbar'
-import { BannerKr, BannerEng } from 'data'
 import styled from 'styled-components'
 import main from 'assets/images/main_Moment.jpg'
+import { BannerKr, BannerEng } from 'data'
 
 const Background = styled.div`
   position: absolute;
@@ -44,6 +44,5 @@ const TopSection = () => {
     </SectionContainer>
   )
 }
-
 
 export default TopSection

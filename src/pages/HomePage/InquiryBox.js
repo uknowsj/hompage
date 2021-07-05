@@ -5,7 +5,7 @@ const InquireContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 600px;
+  width: 100%;
   height: 540px;
   padding:40px 60px;
   box-shadow: 6px 6px 12px rgba(0,0,0,0.3);
@@ -16,8 +16,6 @@ const InquireContainer = styled.div`
     height: auto;
     padding: 40px 30px;
   }
-
-  @media screen and (max-width:)
 `
 const InquireItem = styled.div`
   display: flex;

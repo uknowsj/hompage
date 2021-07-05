@@ -13,9 +13,9 @@ const Footer = () => {
   const fontSize2 = isMobile?'1.2rem':'1.4rem'
 
   return (
-    <Grid width="1296px" padding="20px">
+    <FooterWrapper>
       <Marginer dir="vertical" margin="60px"></Marginer>
-      <Grid width="100%" isFlex align="flex-end"> 
+      <Grid width="100%" isFlex align="flex-end" flex> 
         <Wrapper>
           <Logo>Viewcommz</Logo>
           <Marginer dir="vertical" margin="20px"/>
@@ -27,7 +27,7 @@ const Footer = () => {
                   <TextWrapper2 idx={idx}>
                     <span>{info.title}&emsp;</span>
                     {info.desc}
-                    {idx!=2&&`\n`}
+                    {idx!==2&&`\n`}
                   </TextWrapper2>
                 ))
               }
@@ -57,9 +57,18 @@ const Footer = () => {
         </Wrapper>
       </Grid>
       <Marginer dir="vertical" margin="60px"></Marginer>
-    </Grid>
+    </FooterWrapper>
   )
 }
+
+const FooterWrapper = styled.div`
+  width: 1296px;
+  padding: 20px;
+
+  @media screen and (max-width:1296px){
+    width:100%;
+  }
+`
 
 const Wrapper = styled.div`
   display: flex;

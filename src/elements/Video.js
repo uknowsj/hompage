@@ -13,6 +13,7 @@ export const VideoBanner = ({src, texts}) => {
         <video muted autoPlay loop>
           <source src={src} type="video/mp4" />
         </video>
+        <BannerCover />
         <TitleBox size='big' color='white' center>
           {texts}
         </TitleBox>
@@ -20,6 +21,13 @@ export const VideoBanner = ({src, texts}) => {
     </BannerContainer>
   )
 }
+
+const BannerCover = styled.div`
+  width:100vw;
+  height:100vh;
+  /* background:#43414260; */
+  background:#21212195;
+`
 
 const BannerContainer = styled.div`
   overflow: clip;
@@ -29,7 +37,6 @@ const BannerContainer = styled.div`
 const VideoWrapper = styled.div`
   position: relative;
   max-height: 100vh;
-  
   video {
     position: relative;
     left: 50%;
@@ -38,12 +45,17 @@ const VideoWrapper = styled.div`
     width: 1920px;
   }
 
-  div { //TextBox
+  &> div { //TextBox
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
     width: fit-content;
+  }
+
+  &> div:nth-child(2) {
+    width: 100vw;
+    height: 100vh;
   }
 
   @media screen and (max-width:768px) {
@@ -73,14 +85,11 @@ export const VideoBox = (props) => {
   )
 }
 
-// VideoBox.defaultProps = {
 
-//   isClick:false,
-// }
 
 const VideoContaienr = styled.div`
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
   transition: all 1s ease-in-out;
 
@@ -88,8 +97,8 @@ const VideoContaienr = styled.div`
       css`
       width: 200%;
       /* position: absolute; */
-      transition: all 1s ease-in-out;
-      border:1px solid blue;
+      transition: all .3s ease-in-out;
+      /* border:1px solid blue; */
     `:css`
     width: 100%;
   `

@@ -2,8 +2,8 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 
 const Grid = (props) => {
-  const { isFlex, direction, align, justify, width, margin, padding, bg, display, children } = props
-  const styles = { isFlex, direction, align, justify, width, margin, padding, bg, display }
+  const { isFlex, direction, align, justify, width, margin, padding, bg, display, wrap, children, flexBasis } = props
+  const styles = { isFlex, direction, align, justify, width, margin, padding, bg, wrap, display, flexBasis }
   return (
     <>
       <GridBox {...styles}>{children}</GridBox>
@@ -23,6 +23,7 @@ Grid.defaultProps = {
   margin: '15px 0',
   bg: 'none',
   display: false,
+  flexBasis:1,
 }
 
 const GridBox = styled.div`
@@ -36,7 +37,7 @@ const GridBox = styled.div`
     margin: ${props.margin};
     background: ${props.bg};
   `};
-  
+  // flex 여부로 나눌까?
   ${(props) => props.isFlex&&
     css`
       display: flex;
@@ -44,11 +45,10 @@ const GridBox = styled.div`
       flex-wrap: ${props.wrap};
       align-items: ${props.align};
       justify-content: ${props.justify};
+      flex-basis:${props.flexBasis};
   `}
-
-  
-  @media screen and (max-width:1296px) {
+  /* @media screen and (max-width:1296px) {
     width: 100%;
-  }
+  } */
 `
 export default Grid
