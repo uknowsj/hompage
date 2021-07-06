@@ -9,6 +9,11 @@ export const Marginer = ({dir,margin}) => {
   )
 }
 
+Marginer.defaultProps = {
+  dir: 'vertical',
+  margin: 0,
+}
+
 const MarginStyle = styled.div`
   ${({dir, margin}) => css`
     height: ${dir==='vertical'?margin:0};

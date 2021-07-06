@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import Button,{StyledButton} from 'components/Button'
+import { Button } from 'elements/Button'
 
 const InquireContainer = styled.div`
   display: flex;
@@ -59,7 +59,7 @@ const ItemWrapper = styled.div`
   }
 `
 
-const CustomButton = styled(StyledButton)`  
+const CustomButton = styled(Button)`  
   margin: unset;
   border: 1px solid #adb5bd80; 
 `

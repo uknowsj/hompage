@@ -11,13 +11,14 @@ export const ImageBackground = (props) => {
 
 ImageBackground.defaultProps = {
   src: null,
+  width: '100vw',
   height: '100px',
   margin: '30px 0',
 }
 
 const BackgroundStyled = styled.div`
   position: relative;
-  width: 100vw;
+  width: ${({width})=>width};
   height: ${(props) => props.height};
   left: ${(props) => props.left&&'calc(-50vw + 50%)'};
   margin: ${(props) => props.margin};
@@ -25,6 +26,7 @@ const BackgroundStyled = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `
+
 
 //일반 이미지 컨테이너
 export const ImgBox = ({ src, alt, width, height}) => {

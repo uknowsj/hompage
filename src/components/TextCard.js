@@ -8,7 +8,7 @@ const TextCard = (props) => {
   return (
     <Grid margin={outer_margin}>
       <TitleBox size={title_size}>{title}</TitleBox>
-      <Marginer dir="vertical" margin={inner_margin}/>
+      <Marginer margin={inner_margin}/>
       <TextBox size={text_size}>{text}</TextBox>
     </Grid>
   )

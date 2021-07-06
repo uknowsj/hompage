@@ -1,8 +1,8 @@
 import React from 'react'
 import styled, {css} from 'styled-components'
-import Button,{StyledButton} from 'components/Button'
+import { Button } from 'elements/Button'
 
-const CustomButton = styled(StyledButton)`  
+const CustomButton = styled(Button)`  
   margin-top: 60px;
   border: 1px solid #adb5bd80; 
 `

@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 import { Grid, ImageBackground, ImgBox, 
   Marginer, TextBox, TitleBox, VideoBox } from 'elements'
 import TextCard from 'components/TextCard'
-import Button,{StyledButton} from 'components/Button'
+import { Button } from 'elements/Button'
 import { SectionContainer } from 'components/Container'
 import InquireBox from './InquiryBox'
 import shortcut from 'assets/images/shortcut.svg'
@@ -51,7 +51,7 @@ export const Section1 = ({header,title,desc}) => {
   return (
     <SectionContainer>
       <TitleBox>{header}</TitleBox>
-      <Marginer dir="vertical" margin="50px"/>
+      <Marginer margin="50px"/>
       <Grid isFlex wrap="no wrap" width="80%">
         <Grid isFlex direction="column" align="flex-start" width="60%">
           <TitleBox size="med">{title}</TitleBox>
@@ -107,7 +107,7 @@ export const Section2 = ({header,desc,cards}) => {
             />
         </VideoWrapper>
       </Grid>
-      <Marginer dir="vertical" margin="30px"/>
+      <Marginer margin="30px"/>
       <Grid isFlex justify="flex-start" wrap="no wrap">
         {
           cards.map((card)=>{
@@ -157,11 +157,11 @@ export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTi
 
   return (
     <SectionContainer>
-      <Marginer dir="vertical" margin="60px"/>
+      <Marginer margin="60px"/>
       <TitleBox center>{header}</TitleBox>
-      <Marginer dir="vertical" margin="60px"/>
+      <Marginer margin="60px"/>
       <ImageBackground src={building} height="600px" margin="0"/>
-      <Marginer dir="vertical" margin="100px"/>
+      <Marginer margin="100px"/>
       <Grid isFlex wrap="no wrap">
         <Grid>
           <TitleBox size="small" weight="600">{companyName}</TitleBox>
@@ -172,21 +172,21 @@ export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTi
           <ImgBox src={map} width="100%" alt="지도"/>
         </Grid>
       </Grid>
-      <Marginer dir="vertical" margin="100px"/>
+      <Marginer margin="100px"/>
       <Grid justify="flex-start">
         <TitleBox size="med">{inquiryTitle1}</TitleBox>
       </Grid>
       <Grid isFlex align="flex-start" wrap="no wrap">
         <Grid>
           <TitleBox size="small">{inquiryTitle2}</TitleBox>
-          <Marginer dir="vertical" margin="15px"/>
+          <Marginer margin="15px"/>
           <TextBox size="1.6em">{inquiryText}</TextBox>
         </Grid>
         <Grid>
           <InquireBox />
         </Grid>
       </Grid>
-      <Marginer dir="vertical" margin="60px"/>
+      <Marginer margin="60px"/>
     </SectionContainer>
   )
 }

@@ -6,9 +6,9 @@ import { FaRegPlayCircle } from 'react-icons/fa'
 import {useState} from 'react'
 
 // 메인페이지 영상 배너
-export const VideoBanner = ({src, texts}) => {
+export const VideoBanner = ({src, texts, height}) => {
   return (
-    <BannerContainer>
+    <BannerContainer height={height}>
       <VideoWrapper>
         <video muted autoPlay loop>
           <source src={src} type="video/mp4" />
@@ -32,6 +32,7 @@ const BannerCover = styled.div`
 const BannerContainer = styled.div`
   overflow: clip;
   width: 100vw;
+  height: ${({height})=>height||'auto'};
   position: relative;
 `
 const VideoWrapper = styled.div`

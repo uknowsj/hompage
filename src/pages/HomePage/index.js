@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect } from 'react'
+import React, { useRef, useContext, useState, useEffect, useCallback } from 'react'
 import { Context } from 'context'
 import { PageContainer } from 'components/Container'
 import TopSection from './TopSection'
@@ -11,6 +11,7 @@ import { HomeKr, HomeEng } from 'data';
 import Footer from 'components/Footer'
 
 import main from 'assets/videos/main.mp4';
+import _ from "lodash"
 
 const HomePage = () => {
   const targets = useRef([]);
@@ -37,47 +38,42 @@ const HomePage = () => {
 
   // console.log("out snapE",snapE);
 
-  // let timer;
-  // const handleScroll = (e) => {
-  //   if (!timer) {
-  //     timer = setTimeout(() => {
-  //       timer=null;
-  //       const pos = window.scrollY; 
-  //       console.log(prePos.current,' ',pos)
-  //       console.log("inside idx",idx.current);
-  //       if (prePos.current < pos && !snapE) {
-  //         console.log("scroll down")
-  //         setSnapE(true);
-    
-  //         e.preventDefault();
-          
-  //         if (idx.current < 3) {
-  //           window.scrollTo({top:targets.current[++idx.current].offsetTop,behavior:'smooth'});
-  //           // targets.current[0].scrollIntoView({behavior:'smooth', block: "end", inline: "nearest"})
-  //           console.log("moving down")
-  //         }
-  //         setTimeout(()=>{setSnapE(false)},600);
-  //       }  
-  //       else if (prePos.current > pos && !snapE) {
-  //         console.log("scroll up")
-  //         setSnapE(true)
-  //         if (idx.current > 0) {
-  //           console.log("moving up")
-  //           window.scrollTo({top:targets.current[--idx.current].offsetTop,behavior:'smooth'});
-  //         }
-  //         else if (idx.current===0) {
-  //           console.log("moving up")
-    
-  //           window.scrollTo({top:0,behavior:'smooth'});
-  //           idx.current=-1;
-  //         } 
-  //         setTimeout(()=>{setSnapE(false)},600);
-  //       }
-  //       prePos.current = pos;
-  //     },200);
-  //   }
-  // }
+  // const _handleScroll = _.throttle(()=>{
+  //   const pos = window.scrollY; 
+  //   console.log(prePos.current,' ',pos)
+  //   console.log("inside idx",idx.current);
+  //   if (prePos.current < pos && !snapE) {
+  //     console.log("scroll down")
+  //     setSnapE(true);
 
+  //     if (idx.current < 3) {
+  //       window.scrollTo({top:targets.current[++idx.current].offsetTop,behavior:'smooth'});
+  //       // targets.current[0].scrollIntoView({behavior:'smooth', block: "end", inline: "nearest"})
+  //       console.log("moving down")
+  //     }
+  //     setTimeout(()=>{setSnapE(false)},600);
+  //   }  
+  //   else if (prePos.current > pos && !snapE) {
+  //     console.log("scroll up")
+  //     setSnapE(true)
+  //     if (idx.current > 0) {
+  //       console.log("moving up")
+  //       window.scrollTo({top:targets.current[--idx.current].offsetTop,behavior:'smooth'});
+  //     }
+  //     else if (idx.current===0) {
+  //       console.log("moving up")
+
+  //       window.scrollTo({top:0,behavior:'smooth'});
+  //       idx.current=-1;
+  //     } 
+  //     setTimeout(()=>{setSnapE(false)},600);
+  //   }
+  //   prePos.current = pos;
+
+  // },300)
+
+  // const handleScroll = useCallback(_handleScroll, [snapE]);
+  
   return (
       <PageContainer>
         {/* 수정필요 forwardRef? 전역변수 -> 자식컴포에서 수정? */}

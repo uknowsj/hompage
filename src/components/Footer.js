@@ -14,11 +14,11 @@ const Footer = () => {
 
   return (
     <FooterWrapper>
-      <Marginer dir="vertical" margin="60px"></Marginer>
+      <Marginer margin="60px"></Marginer>
       <Grid width="100%" isFlex align="flex-end" wrap="wrap"> 
         <Wrapper>
           <Logo>Viewcommz</Logo>
-          <Marginer dir="vertical" margin="20px"/>
+          <Marginer margin="20px"/>
             {
               isMobile?
               <TextBox size={fontSize1} lineHeight="2">
@@ -45,7 +45,7 @@ const Footer = () => {
                 }
               </TextBox>
             }
-          <Marginer dir="vertical" margin="20px"/>
+          <Marginer margin="20px"/>
           <TextBox size={fontSize1} font="spoka">{data.copyright}</TextBox>
         </Wrapper>
         <Wrapper>
@@ -56,7 +56,7 @@ const Footer = () => {
           </LinkBox>
         </Wrapper>
       </Grid>
-      <Marginer dir="vertical" margin="60px"></Marginer>
+      <Marginer margin="60px"></Marginer>
     </FooterWrapper>
   )
 }
