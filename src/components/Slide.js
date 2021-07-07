@@ -5,7 +5,7 @@ export const Slide = (props) => {
   const { number, snapE, children } = props;
   return (
     <ViewBox snapE={snapE}>
-      <List number={number}>
+      <List number={number} snapE={snapE}>
         {children}
       </List>
     </ViewBox>
@@ -24,7 +24,10 @@ const List = styled.div`
   height: 400vh;
   transform: ${(props) => props.number&&
     `translate3d(0,${props.number}px,0)`};
-  transition: .5s ease-out;
+  // resize일 때는 transition 적용 안함
+  transition: ${(props) => props.snapE&&`.5s ease-out`};
+
+
 `
 
 

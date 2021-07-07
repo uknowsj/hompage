@@ -7,37 +7,36 @@ const Test = () => {
   const idx = useRef(1);
   const [moveY, setMoveY] = useState(0);
   const { innerHeight, scrollY } = window;
-  const prePos = useRef(0);
   const [snapE,setSnapE] = useState(false);
 
-  const handleScroll = () => {
-      console.log("함수실행")
-    // console.log("scroll",prePos.current, window.scrollY);
-    // console.log("snapE",snapE)
-    // if ((prePos.current < window.scrollY) && !snapE) {
-      console.log("들어옴 idx",idx.current)
+  const handleScroll = (e,height) => {
       if (snapE) return; 
       if (idx.current >= 4) return;
       setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},1000);
-      // e.preventDefault();
-      // e.stopPropagation();
-      console.log("inside snapE",snapE)
-      
-      setMoveY( -innerHeight * (idx.current));
+      setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+      console.log("innerHeight",window.innerHeight);
+      setMoveY( -window.innerHeight * (idx.current));
       idx.current++;
-    // }
-    // prePos.current = window.scrollY;
   }
 
-  const handle = () => {
-    console.log(window.scrollY);
-  }
   useEffect(() => {
-    console.log("effec실행")
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  },[snapE]); //moveY가 바뀌자마자 새로 등록되어서 700초 안기다림
+  },[snapE]); 
+
+  const reSize = () => {
+    //innerHeight 대로 늘어나야함
+    console.log("idx",idx.current);
+    setMoveY(-window.innerHeight * (idx.current-1))
+
+  }
+
+  useEffect(() => {
+    
+    window.addEventListener("resize",()=>{
+      reSize();
+    })
+  },[]);
   
   const LClick = () => {
     console.log("idx",idx.current);
