@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-export const Marginer = ({dir,margin}) => {
+export const Marginer = ({dir,margin, children}) => {
   return (
-    <MarginStyle 
-      dir={dir} margin={margin}>
+    <MarginStyle dir={dir} margin={margin}>
+      {children}
     </MarginStyle>
   )
 }

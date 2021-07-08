@@ -1,4 +1,5 @@
 import Grid from './Grid'
+import { Div, RowFlex, ColumnFlex } from './Layout'
 import { TextBox, TitleBox } from './TextBox'
 import { ImageBackground, ImgBox } from './Image'
 import { VideoBanner, VideoBox } from './Video'
@@ -7,4 +8,5 @@ import { Button, CircleButton } from './Button'
 
 export { Grid, TextBox, TitleBox, 
   ImageBackground, ImgBox, VideoBanner, 
-  VideoBox, Marginer, Button, CircleButton }
+  VideoBox, Marginer, Button, CircleButton,
+  Div, RowFlex, ColumnFlex }

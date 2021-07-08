@@ -13,17 +13,16 @@ export const PageContainer = ({children}) => {
 }
 
 const SectionStyle = styled.div`
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: ${(props) => props.height||'100vh'};
+  min-height: 100vh;
   width: 1296px;
   padding: 0 20px;
 
-
-   @media screen and (max-width:1296px) {
+  @media screen and (max-width:1296px) {
     width: 100vw;
   }
 

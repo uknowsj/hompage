@@ -7,7 +7,7 @@ const Test = () => {
   const idx = useRef(1);
   const prePos = useRef(0);
   const [moveY, setMoveY] = useState(0);
-  const { innerHeight, scrollY } = window;
+  const { innerHeight } = window;
   const [snapE,setSnapE] = useState(false);
 
   //데스크톱
@@ -17,21 +17,32 @@ const Test = () => {
       // 스크롤 중이면 return
       console.log("이몸 입장~", prePos.current, window.scrollY)
       if (snapE) return; 
-      // 스크롤 방향 판단
-      if (e.deltaY>0) { //scroll down
-        if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
+
+      if (prePos.current < window.scrollY) {
+        console.log("들어옴")
+                if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
         setSnapE(true);
         setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
         setMoveY( -window.innerHeight * (idx.current));
         idx.current++;
-      }
-      else { //scroll up
-        if (idx.current <=1) return;
-        setSnapE(true);
-        setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
-        setMoveY(-innerHeight * (idx.current - 2));
-        idx.current--;
-      }
+      } 
+
+      // 스크롤 방향 판단
+      // if (e.deltaY>0) { //scroll down
+      //   if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
+      //   setSnapE(true);
+      //   setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+      //   setMoveY( -window.innerHeight * (idx.current));
+      //   idx.current++;
+      // }
+      // else { //scroll up
+      //   if (idx.current <=1) return;
+      //   setSnapE(true);
+      //   setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+      //   setMoveY(-innerHeight * (idx.current - 2));
+      //   idx.current--;
+      // }
+      prePos.current = window.scrollY;
   }
 
   const startY = useRef(0);
@@ -41,30 +52,46 @@ const Test = () => {
   const moblieScroll = (e) => {
     const endY = e.changedTouches[0].screenY;
     console.log("start end",startY,endY);
-    const deltaY = startY.current - endY; 
-    if (snapE) return; 
-    if (deltaY >= 0) { //scroll down
-      if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
-      setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
-      setMoveY( -window.innerHeight * (idx.current));
-      idx.current++;
-    }
-    else {
-      if (idx.current <=1) return;
-      setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
-      setMoveY(-innerHeight * (idx.current - 2));
-      idx.current--;
-    }
+    // const deltaY = startY.current - endY; 
+    // if (snapE) return; 
+    // if (deltaY >= 0) { //scroll down
+    //   if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
+    //   setSnapE(true);
+    //   setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+    //   setMoveY( -window.innerHeight * (idx.current));
+    //   idx.current++;
+    // }
+    // else {
+    //   if (idx.current <=1) return;
+    //   setSnapE(true);
+    //   setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+    //   setMoveY(-innerHeight * (idx.current - 2));
+    //   idx.current--;
+    // }
   }
 
   useEffect(() => {
     // prePos.current = window.scrollY;
-    window.addEventListener("wheel", handleScroll);
+    window.addEventListener("scroll", (e)=>{
+      e.preventDefault();
+      handleScroll();
+      
+      });
   
-    return () => window.removeEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   },[snapE]); 
+
+  // useEffect(() => {
+  //   // prePos.current = window.scrollY;
+  //   window.addEventListener("wheel", handleScroll);
+  
+  //   return () => window.removeEventListener("wheel", handleScroll);
+  // },[snapE]); 
+
+
+
+
+
 
   const reSize = () => {
     //innerHeight 대로 늘어나야함

@@ -1,5 +1,6 @@
 import { SectionContainer } from 'components/Container'
-import { Grid, ImgBox, TitleBox, TextBox, Marginer, Button, ImageBackground, VideoBanner} from 'elements'
+import { Grid, RowFlex, ColumnFlex, Div, ImgBox, TitleBox, TextBox, Marginer, 
+  Button, ImageBackground, VideoBanner} from 'elements'
 import React from 'react'
 import styled, {css} from 'styled-components'
 import people from 'assets/images/people.png'
@@ -27,15 +28,17 @@ import main from 'assets/videos/main.mp4'
 
 export const Section1 = () => {
   return (
-    <Grid isFlex direction="column" margin="90px 0 0 0">
+    <ColumnFlex margin="90px">
       <TextBox weight="bold">IP Business & Platform Business</TextBox>
-      <TitleBox>비즈니스에 대한 소개</TitleBox>
-      <Grid width="40%">
+      <Marginer margin="15px"/>
+        <TitleBox>비즈니스에 대한 소개</TitleBox>
+      <Marginer margin="30px"/>
+      <Div width="400px">
         <TextBox align="center">오리지널 인기 웹툰, 웹소설부터 하루를 유쾌하게 
   만들어 줄 새로운 채팅방 형식의 재미 콘텐츠, 톡 드립까지!
   세상의 모든 이야기를 카카오페이지에서 즐겨보세요.</TextBox>
-      </Grid>
-    </Grid>
+      </Div>
+    </ColumnFlex>
   )
 }
 
@@ -57,6 +60,35 @@ export const Section2 = () => {
     </SectionContainer>
   )
 }
+
+export const Section2_ = () => {
+  return (
+    <SectionContainer>
+      {/* <RowFlex> */}
+        {/* <ImgBox src={people} alt="사람들 모습" width="1000px" /> */}
+        <Grid width="auto">
+          <Grid padding="0 0 30% 20%">
+            <TitleBox>{`독자의 시선으로\n만든 창작집단`}</TitleBox>
+            <Marginer margin="30px"/>
+            <TextBox lineHeight="2">{`아이들의 별이 아름다운 봅니다. 가난한 나는 헤일 하나에 계십니다.\n이네들은 하나 오면 마리아 청춘이 거외다. 내 못 별 봄이 가득 너무나 까닭입니다.`}</TextBox>
+            <Marginer margin="30px"/>
+            <TextBox weight="bold">{`| 사진설명\n2020.02.16`}</TextBox>
+          </Grid>
+        </Grid>
+        <Div padding="0 0 0 50%" width="100%">
+          <ImgStyle>
+            <img src={people} width="1000px" />
+          </ImgStyle>
+        </Div>
+      {/* </RowFlex> */}
+    </SectionContainer>
+  )
+}
+
+const ImgStyle = styled.div`
+  position: relative;
+  border: 1px solid red;
+`
 
 export const Section3 = () => {
   return (
