@@ -25,7 +25,7 @@ const List = styled.div`
   transform: ${(props) => props.number&&
     `translate3d(0,${props.number}px,0)`};
   // resize일 때는 transition 적용 안함
-  transition: ${(props) => props.snapE&&`.5s ease-out`};
+  transition: ${(props) => props.snapE&&` .6s ease-out`};
 
 
 `
