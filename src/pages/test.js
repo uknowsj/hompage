@@ -5,23 +5,38 @@ import _ from 'lodash'
 
 const Test = () => {
   const idx = useRef(1);
+  const prePos = useRef(0);
   const [moveY, setMoveY] = useState(0);
   const { innerHeight, scrollY } = window;
   const [snapE,setSnapE] = useState(false);
 
-  const handleScroll = (e,height) => {
+  const handleScroll = (e) => {
+      // 스크롤 중이면 return
+      console.log("이몸 입장~", prePos.current, window.scrollY)
       if (snapE) return; 
-      if (idx.current >= 4) return;
-      setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
-      console.log("innerHeight",window.innerHeight);
-      setMoveY( -window.innerHeight * (idx.current));
-      idx.current++;
+      // 스크롤 방향 판단
+      if (e.deltaY>0) { //scroll down
+        console.log("못들어오나?")
+        if (idx.current >=4) return; // 스크롤 범위 넘어가도 return
+        setSnapE(true);
+        setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+        setMoveY( -window.innerHeight * (idx.current));
+        idx.current++;
+      }
+      else { //scroll up
+        if (idx.current <=1) return;
+        setSnapE(true);
+        setTimeout(()=>{setSnapE(false)},800); //600ms 동안 block
+        setMoveY(-innerHeight * (idx.current - 2));
+        idx.current--;
+      }
+      
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // prePos.current = window.scrollY;
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
   },[snapE]); 
 
   const reSize = () => {
