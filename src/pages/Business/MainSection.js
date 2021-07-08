@@ -25,6 +25,7 @@ import gling from 'assets/images/gling.png'
 import TextCard from 'components/TextCard'
 
 import main from 'assets/videos/main.mp4'
+import { BizPeople, BizIntro1, BizIntro2, BizIntro3 } from 'assets/images'
 
 export const Section1 = () => {
   return (
@@ -46,7 +47,7 @@ export const Section2 = () => {
   return (
     <SectionContainer>
       <Grid isFlex width="100vw" justify="flex-start">
-        <ImgBox src={people} alt="사람들 모습" width="1000px" />
+        <ImgBox src={BizPeople} alt="사람들 모습" width="1000px" />
         <Grid width="auto">
           <Grid padding="0 0 30% 20%">
             <TitleBox>{`독자의 시선으로\n만든 창작집단`}</TitleBox>
@@ -76,9 +77,7 @@ export const Section2_ = () => {
           </Grid>
         </Grid>
         <Div padding="0 0 0 50%" width="100%">
-          <ImgStyle>
-            <img src={people} width="1000px" />
-          </ImgStyle>
+            <img src={BizPeople} width="1000px" />
         </Div>
       {/* </RowFlex> */}
     </SectionContainer>

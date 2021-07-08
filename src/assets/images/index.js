@@ -1,0 +1,10 @@
+export { default as CompanyBuilding } from './building.jpg'
+
+export { default as BizPeople} from './people.png'
+export { default as BizIntro1 } from './b2.jpg'
+export { default as BizIntro2 } from './b3.jpg'
+export { default as BizIntro3 } from './b4.png'
+export { default as BizGling } from './gling.png'
+export { default as BizLogo1 } from './logo1.png'
+export { default as BizLogo2 } from './logo2.png'
+export { default as BizLogo3 } from './logo3.png'
