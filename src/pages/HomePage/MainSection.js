@@ -63,12 +63,22 @@ export const Section1 = ({header,title,desc}) => {
           </Button>
         </Grid>
         <Grid>
-          <ImgBox src={phoneImg} alt="cellPhone" width="600px"/>
+          <Box />
+          {/* <ImgBox src={phoneImg} alt="cellPhone" width="600px"/> */}
         </Grid>
       </Grid>
     </SectionContainer>
   )
 }
+
+const Box = styled.div`
+  width: 400px;
+  height: 600px;
+  background: #ffe066;
+  border-radius : 36px;
+  box-shadow: 3px 3px 6px #dee2e6;
+
+`
 
 export const Bar = styled.div`
   width: 80px;
@@ -150,6 +160,46 @@ export const Bar2 = styled.div`
 `
 //1296
 // SECTION 3
+export const Section3_ = ({header,companyName,companyInfo,inquiryTitle1,inquiryTitle2,inquiryText}) => {
+  const isDesktop = useMediaQuery({ minWidth: 769 });
+
+  if (!isDesktop) return null;
+
+  return (
+    <SectionContainer>
+      <Marginer margin="60px"/>
+      <TitleBox center>{header}</TitleBox>
+      <Marginer margin="60px"/>
+      <ImageBackground src={building} height="600px" margin="0"/>
+      <Marginer margin="100px"/>
+      <Grid isFlex wrap="no wrap">
+        <Grid>
+          <TitleBox size="small" weight="600">{companyName}</TitleBox>
+          <Bar2 />
+          <TextBox size="1.6rem" lineHeight="2">{companyInfo}</TextBox>
+        </Grid>
+        <Grid isFlex flexBasis="200%">
+          <ImgBox src={map} width="100%" alt="지도"/>
+        </Grid>
+      </Grid>
+      <Marginer margin="100px"/>
+      <Grid justify="flex-start">
+        <TitleBox size="med">{inquiryTitle1}</TitleBox>
+      </Grid>
+      <Grid isFlex align="flex-start" wrap="no wrap">
+        <Grid>
+          <TitleBox size="small">{inquiryTitle2}</TitleBox>
+          <Marginer margin="15px"/>
+          <TextBox size="1.6em">{inquiryText}</TextBox>
+        </Grid>
+        <Grid>
+          <InquireBox />
+        </Grid>
+      </Grid>
+      <Marginer margin="60px"/>
+    </SectionContainer>
+  )
+}
 export const Section3 = ({header,companyName,companyInfo,inquiryTitle1,inquiryTitle2,inquiryText}) => {
   const isDesktop = useMediaQuery({ minWidth: 769 });
 

@@ -14,15 +14,18 @@ import Footer from 'components/Footer'
 import main from 'assets/videos/main.mp4';
 import useSwiper from 'hooks/useSwiper'
 
-
+import Navbar from 'components/Navbar'
 const HomePage = () => {
   const {state:{language}} = useContext(Context);
   let langType = language.selected==='KOR'?HomeKr:HomeEng
 
   // 전체 페이지 Swiper
-  const [moveY, snapE] = useSwiper(3);
+  const [moveY, snapE] = useSwiper(4);
   
   return (
+    <>
+    {/* moveY가 0이 아니면 navBar 배경 추가 */}
+    <Navbar moveY={moveY}/> 
     <Slide moveY={moveY} snapE={snapE} className="slide">
       <PageContainer>
         <TopSection/>
@@ -47,7 +50,7 @@ const HomePage = () => {
           desc={langType.section2.desc}
           src={main}
         />
-        {/* <Section3
+        <Section3
           header={langType.section3.header}
           companyName={langType.section3.companyName}
           companyInfo={langType.section3.companyInfo}
@@ -56,7 +59,7 @@ const HomePage = () => {
           inquiryTitle2={langType.section3.inquiryTitle2}
           inquiryText={langType.section3.inquiryText}
         />
-        <MobSection3 
+        {/* <MobSection3 
           header={langType.section3.header}
           companyName={langType.section3.companyName}
           companyInfo={langType.section3.companyInfo}
@@ -64,10 +67,11 @@ const HomePage = () => {
           inquiryTitle1={langType.section3.inquiryTitle1}
           inquiryTitle2={langType.section3.inquiryTitle2}
           inquiryText={langType.section3.inquiryText}
-        />
-        <Footer></Footer> */}
+        /> */}
+        <Footer></Footer>
       </PageContainer>
     </Slide>
+    </>
   )
 }
 

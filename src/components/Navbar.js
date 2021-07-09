@@ -7,7 +7,7 @@ import {DefaultLayout} from 'style/CommonStyle'
 
 const NavContainer = styled.div`
   width:100vw;
-  height: 60px;
+  height: 80px;
   position: fixed;
   top: 0;
 
@@ -15,15 +15,20 @@ const NavContainer = styled.div`
   justify-content: center;
   
   background-color: transparent;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: 'Spoqa Han Sans', sans-serif;
   color: white;
-  /* transition: .2s ease-out; */
+  background: transparent;
+  backdrop-filter: blur(8px);
 
   ${props => props.active &&
       css`
+        height: 60px;
+        font-size: 1.4rem;
         background-color: white;
         color: black;
+        box-shadow: 0px 2px 36px rgba(0,0,0,0.1);
+        transition: all .2s ease;
       `
   }
 
@@ -164,7 +169,7 @@ const Language = ({ clickLang, selected }) => {
 
 }
 
-const Navbar = () => {
+const Navbar = ({moveY}) => {
   const [click, setClick] = useState(false);
   const [position, setPosition] = useState(0); //scroll  
 
@@ -174,21 +179,9 @@ const Navbar = () => {
   // 모바일 화면에서 햄버거 아이콘 선택
   const handleClick = () => setClick(!click);
 
-  // 스크롤 다운 시 네비 CSS 변경
-  const onScroll = () => {
-    setPosition(window.scrollY);
-  }
-  useEffect(()=>{
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll",onScroll);
-    };
-  },[]);
-
-
   return (
     <>
-    <NavContainer active={position>=100?true:false}>
+    <NavContainer active={moveY < 0?true:false}>
       <Wrapper>
         <Logo to="/">
           VIEWCOMMZ

@@ -1,5 +1,5 @@
 import { SectionContainer } from 'components/Container'
-import { Grid, RowFlex, ColumnFlex, Div, ImgBox, TitleBox, TextBox, Marginer, 
+import { Grid, FlexRow, FlexColumn, Div, ImgBox, TitleBox, TextBox, Marginer, 
   Button, ImageBackground, VideoBanner} from 'elements'
 import React from 'react'
 import styled, {css} from 'styled-components'
@@ -29,84 +29,61 @@ import { BizPeople, BizIntro1, BizIntro2, BizIntro3 } from 'assets/images'
 
 export const Section1 = () => {
   return (
-    <ColumnFlex margin="90px">
+    <FlexColumn margin="90px">
       <TextBox weight="bold">IP Business & Platform Business</TextBox>
       <Marginer margin="15px"/>
-        <TitleBox>비즈니스에 대한 소개</TitleBox>
+      <TitleBox>비즈니스에 대한 소개</TitleBox>
       <Marginer margin="30px"/>
       <Div width="400px">
         <TextBox align="center">오리지널 인기 웹툰, 웹소설부터 하루를 유쾌하게 
   만들어 줄 새로운 채팅방 형식의 재미 콘텐츠, 톡 드립까지!
   세상의 모든 이야기를 카카오페이지에서 즐겨보세요.</TextBox>
       </Div>
-    </ColumnFlex>
+    </FlexColumn>
   )
 }
 
 export const Section2 = () => {
   return (
     <SectionContainer>
-      <Grid isFlex width="100vw" justify="flex-start">
-        <ImgBox src={BizPeople} alt="사람들 모습" width="1000px" />
-        <Grid width="auto">
-          <Grid padding="0 0 30% 20%">
+        <Div width="100%">
+          <FlexColumn align="flex-start">
             <TitleBox>{`독자의 시선으로\n만든 창작집단`}</TitleBox>
             <Marginer margin="30px"/>
             <TextBox lineHeight="2">{`아이들의 별이 아름다운 봅니다. 가난한 나는 헤일 하나에 계십니다.\n이네들은 하나 오면 마리아 청춘이 거외다. 내 못 별 봄이 가득 너무나 까닭입니다.`}</TextBox>
             <Marginer margin="30px"/>
             <TextBox weight="bold">{`| 사진설명\n2020.02.16`}</TextBox>
-          </Grid>
-        </Grid>
-      </Grid>
-    </SectionContainer>
-  )
-}
-
-export const Section2_ = () => {
-  return (
-    <SectionContainer>
-      {/* <RowFlex> */}
-        {/* <ImgBox src={people} alt="사람들 모습" width="1000px" /> */}
-        <Grid width="auto">
-          <Grid padding="0 0 30% 20%">
-            <TitleBox>{`독자의 시선으로\n만든 창작집단`}</TitleBox>
-            <Marginer margin="30px"/>
-            <TextBox lineHeight="2">{`아이들의 별이 아름다운 봅니다. 가난한 나는 헤일 하나에 계십니다.\n이네들은 하나 오면 마리아 청춘이 거외다. 내 못 별 봄이 가득 너무나 까닭입니다.`}</TextBox>
-            <Marginer margin="30px"/>
-            <TextBox weight="bold">{`| 사진설명\n2020.02.16`}</TextBox>
-          </Grid>
-        </Grid>
-        <Div padding="0 0 0 50%" width="100%">
+          </FlexColumn>
+        </Div>
+        <Div position="absolute" padding="0 0 0 50%" width="100%">
             <img src={BizPeople} width="1000px" />
         </Div>
-      {/* </RowFlex> */}
     </SectionContainer>
   )
 }
-
-const ImgStyle = styled.div`
-  position: relative;
-  border: 1px solid red;
-`
 
 export const Section3 = () => {
   return (
-    <>
+    <SectionContainer>
       <TitleBox>비즈니스에 대한 소개</TitleBox>
+      <Marginer margin="30px"/>
       <TextBox align="center">{`아이들의 별이 아름다운 봅니다.\n가난한 나는 헤일 하나에 계십니다.\n이네들은 하나 오면 마리아 청춘이 거외다. 내 못 별 봄이 가득 너무나 까닭입니다.`}</TextBox>
-      <Grid isFlex width="1296px" padding="0 20px">
-        <Card src={b2}/>
-        <Card src={b3}/>
-        <Card src={b4}/>
-      </Grid>
-    </>
+      <Marginer margin="60px"/>
+      <Div width="100%">
+        <FlexRow>
+          <Card />
+          <Card />
+          <Card />
+        </FlexRow>
+      </Div>
+    </SectionContainer>
   )
 }
 
 // 브랜드
-
 export const Section4 = () => {
   return (
+    <SectionContainer>
     <Grid isFlex wrap="wrap" width="800px" margin="200px 0 200px 0" justify="center">
       <TitleBox>자사 브랜드</TitleBox>
       <Grid isFlex>
@@ -133,6 +110,7 @@ export const Section4 = () => {
         </Grid>
       </Grid>
     </Grid>
+    </SectionContainer>
   )
 }
 

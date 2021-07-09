@@ -5,24 +5,26 @@ import styled, { css } from 'styled-components'
 
 // 1. Default Wrapper
 export const Div = (props) => {
-  const { width, height, padding, bg, children } = props
-  const styles = { width, height, padding, bg, children }
+  const { position, width, height, padding, bg, children } = props
+  const styles = { position, width, height, padding, bg, children }
   return (
     <DefaultStyle {...styles}>{children}</DefaultStyle>
   )
 }
 
-Div.DefaultStyle = {
-  width: 'auto',
+Div.defaultProps = {
+  position: 'static',
+  width: '100%',
   height: 'auto',
   padding: 0,
-  bg: 'white',
+  bg: 'transparent',
   margin: '15px 0',
 }
 
 const DefaultStyle = styled.div`
   box-sizing: border-box;
-  ${({width, height, padding, bg, margin}) => css`
+  ${({position, width, height, padding, bg, margin}) => css`
+    position: ${position};
     width: ${width};
     height: ${height};
     padding: ${padding};
@@ -30,33 +32,45 @@ const DefaultStyle = styled.div`
     margin: ${margin};
   `}
 `
-// 2. Flex - RowFlex
-export const RowFlex = (props) => {
-  const { justify, children } = props
+// 2. Flex - FlexRow
+export const FlexRow = (props) => {
+  const { justify, margin, children } = props
   return (
-    <FlexStyle>
+    <FlexStyle justify={justify} margin={margin}>
       {children}
     </FlexStyle>
   )
 }
 
-// 2. Flex - ColumnFlex
-export const ColumnFlex = (props) => {
-  const { margin, children } = props
+FlexRow.defaultProps = {
+  justify: 'space-between',
+  margin: '0',
+}
+
+const FlexStyle = styled.div`
+  display: flex;
+  justify-content: ${({justify}) => justify};
+  margin-top : ${({margin}) => margin};
+`
+
+// 2. Flex - FlexColumn
+export const FlexColumn = (props) => {
+  const { align, margin, children } = props
   return (
-    <ColumnFlexStyle margin={margin}>
+    <ColumnFlexStyle align={align} margin={margin}>
       {children}
     </ColumnFlexStyle>
   )
 }
 
-const FlexStyle = styled.div`
-  ${DefaultStyle};
+FlexColumn.defaultProps = {
+  align: 'center',
+  margin: '0',
+}
+
+const ColumnFlexStyle = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-const ColumnFlexStyle = styled(FlexStyle)`
   flex-direction: column;
+  align-items: ${({align}) => align};
   margin-top : ${({margin}) => margin};
 `

@@ -14,9 +14,15 @@ export const VideoBanner = ({src, texts, height}) => {
           <source src={src} type="video/mp4" />
         </video>
         <BannerCover />
-        <TitleBox size='big' color='white' center>
-          {texts}
-        </TitleBox>
+        <div style={{width:'1296px'}}>
+          <TitleBox size='big' color='white'>
+            {texts}
+          </TitleBox>
+          <TextBox color='white' size='2rem'>
+            {`안녕하세요. 전자책 전문 제작·유통 업체 뷰컴즈입니다.`}
+          </TextBox>
+
+        </div>
       </VideoWrapper>
     </BannerContainer>
   )
@@ -122,7 +128,6 @@ const VideoPlayButton = styled.div`
     z-index: 100;
   }
   ${(props) => {
-    console.log("props", props.isClick);
     return props.isClick&&css`
       display: none;
       &:hover {
