@@ -67,7 +67,7 @@ TitleBox.defaultProps = {
 
 const TitleStyle = styled.div`
   font-size: ${({size}) => {
-    if (size === 'big') return '7.2rem'
+    if (size === 'big') return '6.2rem'
     else if (size === 'med') return '3.6rem';
     else if (size === 'small') return '2.6rem';
     else return '4.8rem';

@@ -19,7 +19,7 @@ const SectionStyle = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  width: 1296px;
+  width: 1336px;
   padding: 0 20px;
 
   @media screen and (max-width:1296px) {
