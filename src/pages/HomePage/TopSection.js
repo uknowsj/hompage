@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { Context } from 'context'
 import { SectionContainer } from 'components/Container'
-import { VideoBanner } from 'elements'
+// import { VideoBanner } from 'elements'
+import { VideoBanner } from 'elements/Vidoe_'
 import sample from 'assets/videos/main.mp4'
 import { BannerKr, BannerEng } from 'data'
 import styled from 'styled-components'
@@ -31,7 +32,7 @@ const TopSection = () => {
   const {state:{language}} = useContext(Context);
   return (
     <SectionContainer noPadding>
-      <Background src={main}/>
+      {/* <Background src={main}/> */}
       <VideoBanner 
         src={ sample } 
         texts={
