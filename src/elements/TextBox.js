@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 // 기본 텍스트
 export const TextBox = (props) => {
@@ -47,9 +47,9 @@ const TextStyle = styled.div`
 `
 
 // 타이틀
-export const TitleBox = (props) => {
-  const { size, color, center, lineHeight, children } = props
-  const styles = { size, color, center, lineHeight }
+export const TitleBox = ({ children , ...styles}) => {
+  // const { size, color, center, lineHeight, children } = props
+  // const styles = { size, color, center, lineHeight }
   return (
     <TitleStyle {...styles}>
       {children}
@@ -65,6 +65,27 @@ TitleBox.defaultProps = {
   lineHeight: '1.6'
 }
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+`
 const TitleStyle = styled.div`
   font-size: ${({size}) => {
     if (size === 'big') return '7.2rem'
@@ -81,6 +102,20 @@ const TitleStyle = styled.div`
   word-break: keep-all;
   line-height: ${({lineHeight}) => lineHeight};
 
+
+  //animation
+  animation-name: ${fadeIn};
+  animation-duration: .1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  /* opacity: 1; */
+  /* transition: .1s ease; */
+  ${props => { return props.snapE &&
+    css`
+      animation-name: ${fadeOut};
+    `
+    }
+  }
   @media screen and (max-width:768px) {
     font-size: ${({size}) => {
       if (size === 'med') return '2.2rem';

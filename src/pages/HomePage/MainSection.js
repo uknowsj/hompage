@@ -43,14 +43,14 @@ export const Section0 = () => {
 
 }
 
-export const Section1 = ({header,title,desc}) => {
+export const Section1 = ({snapE, header,title,desc}) => {
   const isDesktop = useMediaQuery({ minWidth: 769 });
 
   if (!isDesktop) return null;
 
   return (
     <SectionContainer>
-      <TitleBox>{header}</TitleBox>
+      <TitleBox snapE={snapE}>{header}</TitleBox>
       <Marginer margin="50px"/>
       <Grid isFlex wrap="no wrap" width="80%">
         <Grid isFlex direction="column" align="flex-start" width="60%">
@@ -88,7 +88,7 @@ export const Bar = styled.div`
 `
 
 // SECTION 2
-export const Section2 = ({header,desc,cards}) => {
+export const Section2 = ({snapE, header,desc,cards}) => {
   const isDesktop = useMediaQuery({ minWidth: 769 })
   // 영상이 클릭되면 desc 부분 사라짐
   const [click, setClick] = useState(false)
@@ -101,7 +101,7 @@ export const Section2 = ({header,desc,cards}) => {
   
   
   return (
-    <SectionContainer>
+    <SectionContainer snapE={snapE}>
       <Grid>
         <TitleBox>{header}</TitleBox>
       </Grid>

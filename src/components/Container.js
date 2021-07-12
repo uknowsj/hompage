@@ -5,6 +5,8 @@ const PageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #e9ecef;
+
 `
 export const PageContainer = ({children}) => {
   return (
@@ -21,7 +23,6 @@ const SectionStyle = styled.div`
   min-height: 100vh;
   width: 1296px;
   padding: 0 20px;
-
   @media screen and (max-width:1296px) {
     width: 100vw;
   }

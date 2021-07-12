@@ -31,6 +31,7 @@ const HomePage = () => {
         <TopSection/>
         {/* <Section0/> */}
         <Section1 
+          snapE={snapE}
           header={langType.section1.header} 
           title={langType.section1.title} 
           desc={langType.section1.desc}
@@ -41,6 +42,7 @@ const HomePage = () => {
           desc={langType.section1.desc}
         />
         <Section2
+          snapE={snapE}
           header={langType.section2.header}
           desc={langType.section2.desc}
           cards={langType.section2.cards}

@@ -12,14 +12,14 @@ const useSwiper = (number) => {
     if (e.deltaY > 0) { // scroll down
       if (idx.current >= number) return; // 스크롤 범위 넘어가도 return
       setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},800); //800ms 동안 block
+      setTimeout(()=>{setSnapE(false)},600); //800ms 동안 block
       setMoveY(-window.innerHeight * (idx.current));
       idx.current++;
     }
     else { //scroll up
       if (idx.current <=1) return;
       setSnapE(true);
-      setTimeout(()=>{setSnapE(false)},800);
+      setTimeout(()=>{setSnapE(false)},600);
       setMoveY(-window.innerHeight * (idx.current - 2));
       idx.current--;
     }

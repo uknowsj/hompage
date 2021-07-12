@@ -27,8 +27,6 @@ const List = styled.div`
     `translate3d(0,${props.moveY}px,0)`};
   // resize일 때는 transition 적용 안함
   transition: ${(props) => props.snapE&&` .5s ease-in-out`};
-
-
 `
 
 
